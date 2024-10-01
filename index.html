@@ -286,7 +286,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-40669e28.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-2597500e.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-966d6edc.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-024da600.js"></script>
 
@@ -324,9 +324,6 @@
               </ul>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
             <a href="#articles" class="toc-h1 toc-link" data-title="Articles">Articles</a>
               <ul class="toc-list-h2">
                   <li>
@@ -352,10 +349,13 @@
                   <li>
                     <a href="#find-company-by-id" class="toc-h2 toc-link" data-title="Find Company by ID">Find Company by ID</a>
                   </li>
+                  <li>
+                    <a href="#find-list-of-companies-by-ids" class="toc-h2 toc-link" data-title="Find list of companies by IDs">Find list of companies by IDs</a>
+                  </li>
+                  <li>
+                    <a href="#find-list-of-companies" class="toc-h2 toc-link" data-title="Find list of companies">Find list of companies</a>
+                  </li>
               </ul>
-          </li>
-          <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -409,22 +409,22 @@
 </tr>
 <tr>
 <td><span class="method-get">GET</span></td>
-<td><a href="##get-all-companies">/companies</a></td>
+<td><a href="#get-all-companies">/companies</a></td>
 <td style="text-align: left">Search companies with parameters</td>
 </tr>
 <tr>
 <td><span class="method-get">GET</span></td>
-<td><a href="#getcompaniescompanyid">/companies/{companyId}</a></td>
+<td><a href="#find-company-by-id">/companies/{companyId}</a></td>
 <td style="text-align: left">Find company by ID</td>
 </tr>
 <tr>
 <td><span class="method-get">GET</span></td>
-<td><a href="#getcompaniescollection">/companies/collection</a></td>
+<td><a href="#find-list-of-companies-by-ids">/companies/collection</a></td>
 <td style="text-align: left">Find a collection of companies by IDS</td>
 </tr>
 <tr>
 <td><span class="method-get">GET</span></td>
-<td><a href="#getcompaniesv2">/companies/v2</a></td>
+<td><a href="#find-list-of-companies">/companies/v2</a></td>
 <td style="text-align: left">Search companies with parameters</td>
 </tr>
 <tr>
@@ -453,53 +453,9 @@
 <td style="text-align: left">Find collection of signals by IDS</td>
 </tr>
 </tbody></table>
-<h1 id='authentication'>Authentication</h1>
+<h1 id='articles'>Articles</h1><h2 id='get-all-articles'>Get All Articles</h2>
 <blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='articles'>Articles</h1><h2 id='get-all-articles'>Get All Articles</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>This query returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
@@ -736,7 +692,17 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </span></code></pre></div>
 <p>This endpoint retrieves a list of articles according to the query parameters shown below.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://api.decidento.com/articles</code></p>
+<style>
+  .method-get {
+    color: green;
+    font-weight: bold;
+  }
+</style>
+
+<p><span class="method-get">GET </span>
+<code>
+ https://api.decidento.com/articles
+</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1306,23 +1272,9 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td>Type de permis de construire (ex: &quot;permis_amenager&quot;).</td>
 </tr>
 </tbody></table>
-<h2 id='search-for-list-of-articles'>Search for list of articles</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
+<h2 id='search-for-list-of-articles'>Search for list of articles</h2>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>This query command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
@@ -1361,7 +1313,15 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </span></code></pre></div>
 <p>This endpoint retrieves a list of articles.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://api.decidento.com/articles/search/</code></p>
+<style>
+  .method-get {
+    color: green;
+    font-weight: bold;
+  }
+</style>
+
+<p><span class="method-get">GET </span>
+<code>https://api.decidento.com/articles/search/</code></p>
 <h3 id='query-parameteres'>Query Parameteres</h3>
 <table><thead>
 <tr>
@@ -1490,29 +1450,22 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td>URI du lien vers l&#39;article ou l&#39;extranet.</td>
 </tr>
 </tbody></table>
-<h2 id='find-article-by-id'>Find Article by id</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-X</span> DELETE <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
+<h2 id='find-article-by-id'>Find Article by id</h2>
 <blockquote>
 <p>The above command returns JSON structured like : <a href="#get-all-articles">this</a></p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code></code></pre></div>
 <p>This endpoint retrieves article by id.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://api.decidento.com/articles/{articleId}/</code></p>
+<style>
+  .method-get {
+    color: green;
+    font-weight: bold;
+  }
+</style>
+
+<p><span class="method-get">GET </span>
+<code>https://api.decidento.com/articles/{articleId}/</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1522,32 +1475,25 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>L&#39;id de l&#39;article voulu</td>
+<td>L&#39;id de l&#39;article</td>
 </tr>
 </tbody></table>
-<h2 id='find-collection-of-articles-by-id'>Find collection of Articles by id</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-X</span> DELETE <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
+<h2 id='find-collection-of-articles-by-id'>Find collection of Articles by id</h2>
 <blockquote>
 <p>The above command returns JSON structured like : <a href="#get-all-articles">this</a></p>
 </blockquote>
 
 <p>This endpoint retrieves a list of articles by IDs.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET https://api.decidento.com/articles/collection/</code></p>
+<style>
+  .method-get {
+    color: green;
+    font-weight: bold;
+  }
+</style>
+
+<p><span class="method-get">GET </span>
+<code>https://api.decidento.com/articles/collection/</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1559,24 +1505,10 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <tr>
 <td>listIds</td>
 <td>Tableau de chaine de caractères</td>
-<td>L&#39;id de l&#39;article voulu</td>
+<td>L&#39;id de l&#39;article</td>
 </tr>
 </tbody></table>
-<h1 id='companies'>Companies</h1><h2 id='get-all-companies'>Get All Companies</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
-</code></pre></div>
+<h1 id='companies'>Companies</h1><h2 id='get-all-companies'>Get All Companies</h2>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -1611,9 +1543,17 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves all companies.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET https://api.decidento.com/companies</code></p>
-<h3 id='query-parameters-3'>Query Parameters</h3>
+<h3 id='http-request'>HTTP Request</h3>
+<style>
+  .method-get {
+    color: green;
+    font-weight: bold;
+  }
+</style>
+
+<p><span class="method-get">GET </span>
+<code>https://api.decidento.com/companies</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -1667,7 +1607,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td>Format de sortie</td>
 </tr>
 </tbody></table>
-<h3 id='reponse-3'>Reponse</h3>
+<h3 id='reponse'>Reponse</h3>
 <style>
   .field {
     font-weight: bold;
@@ -1737,21 +1677,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td>URL du lien</td>
 </tr>
 </tbody></table>
-<h2 id='find-company-by-id'>Find Company by ID</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
-</code></pre></div>
+<h2 id='find-company-by-id'>Find Company by ID</h2>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -1842,9 +1768,17 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves some company by its ID.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
-<p><code>GET https://api.decidento.com/companies/{companyId}</code></p>
-<h3 id='query-parameters-4'>Query Parameters</h3>
+<h3 id='http-request-2'>HTTP Request</h3>
+<style>
+  .method-get {
+    color: green;
+    font-weight: bold;
+  }
+</style>
+
+<p><span class="method-get">GET </span>
+<code>https://api.decidento.com/companies/{companyId}</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -1854,7 +1788,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </thead><tbody>
 <tr>
 <td>companyId *</td>
-<td>Entier ($int64)</td>
+<td>Entier</td>
 <td>ID of the company to return (ex: 2105)</td>
 </tr>
 <tr>
@@ -1863,7 +1797,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td>Output format (Default value: json)</td>
 </tr>
 </tbody></table>
-<h3 id='reponse-4'>Reponse</h3>
+<h3 id='reponse-2'>Reponse</h3>
 <style>
   .field {
     font-weight: bold;
@@ -2178,62 +2112,811 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td>Nombre d&#39;actes liés à l&#39;entreprise</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
+<h2 id='find-list-of-companies-by-ids'>Find list of companies by IDs</h2>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">72242</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"siren"</span><span class="p">:</span><span class="w"> </span><span class="mi">831946488</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800010</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"siege"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"social_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN TOURISME LAB NIMES METROPOLE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sirets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800123</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">75008</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800128</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">75019</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/2438"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/24384"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"last_modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-28 03:40:48"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"enseigne"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Burger King"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sigle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LCL"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rcs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RCS Paris 654 987 321"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tva_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR76662042449"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"index_euro"</span><span class="p">:</span><span class="w"> </span><span class="mi">998209</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"immatriculation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/07/1966"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"naf_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6419Z - Autres intermédiations monétaires"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"juridic_form"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Autre SA à conseil d'administration"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type_etablissement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"categorie_full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Autres intermédiations monétaires"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"category_light"</span><span class="p">:</span><span class="w"> </span><span class="s2">"banque et assurance"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"capital_social"</span><span class="p">:</span><span class="w"> </span><span class="mi">2499597122</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fonds_propres"</span><span class="p">:</span><span class="w"> </span><span class="mi">344069905</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ca_bilan"</span><span class="p">:</span><span class="w"> </span><span class="mi">44069905</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"effectif_precis"</span><span class="p">:</span><span class="w"> </span><span class="mi">43200</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resultat_net"</span><span class="p">:</span><span class="w"> </span><span class="mi">3645976</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resultat_exploitation"</span><span class="p">:</span><span class="w"> </span><span class="mi">645976</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"radiate"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"indice_risque_info_legal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Risque faible"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"indice_risque_score3"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"anne_indice_risque_score3"</span><span class="p">:</span><span class="w"> </span><span class="mi">2017</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nb_filliales_directes\""</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nb_filliales_indirectes\""</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1762 route de Pontenx"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40160"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PARENTIS-EN-BORN"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"department"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Landes"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"geo_lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">44.342170715332</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"geo_long"</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.0811624526978</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"telephone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05 58 82 95 00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fax_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 42 82 12 99"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"web_site"</span><span class="p">:</span><span class="w"> </span><span class="s2">"//google.fr"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url_maps\""</span><span class="p">:</span><span class="w"> </span><span class="s2">"44.3351073;-1.0852105000000165"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url_viadeo\""</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url_twitter\""</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url_gnews\""</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url_wikipedia\""</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url_facebook\""</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url_linkedin\""</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url_score3\""</span><span class="p">:</span><span class="w"> </span><span class="s2">"//www.score3.fr/VERMILION-REP-SAS-410964837.shtml"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url_scoopit\""</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"logo_url\""</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email_contact\""</span><span class="p">:</span><span class="w"> </span><span class="s2">"contact@mycompany.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mr X"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Président"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Miss Y"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Directeur général"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"nb_actes"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves some company by its ID.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<style>
+  .method-get {
+    color: green;
+    font-weight: bold;
+  }
+</style>
 
-<p>The Kittn API uses the following error codes:</p>
-
+<p><span class="method-get">GET </span>
+<code>https://api.decidento.com/companies/collection</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th>Champ</th>
+<th>Type</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
+<td>listIds</td>
+<td>tableau de chaînes</td>
+<td>Identifiants (IDs) des entreprises à retourner</td>
 </tr>
 <tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
+<td>_format</td>
+<td>chaîne de caractères</td>
+<td>Format de sortie</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td></td>
+<td>Valeurs disponibles : json, xml</td>
+<td></td>
 </tr>
 <tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td></td>
+<td>Valeur par défaut : json</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='reponse-3'>Reponse</h3>
+<style>
+  .field {
+    font-weight: bold;
+  }
+</style>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>entier</td>
+<td>Identifiant unique de l&#39;entreprise</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+<td>siren</td>
+<td>entier</td>
+<td>Numéro SIREN (identifiant unique à 9 chiffres)</td>
 </tr>
 <tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+<td>siret</td>
+<td>entier</td>
+<td>Numéro SIRET (identifiant de l’établissement à 14 chiffres)</td>
 </tr>
 <tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
+<td>siege</td>
+<td>booléen</td>
+<td>Indique si c&#39;est le siège social</td>
 </tr>
 <tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
+<td>social_name</td>
+<td>chaîne de caractères</td>
+<td>Raison sociale de l&#39;entreprise</td>
 </tr>
 <tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>sirets</td>
+<td>tableau</td>
+<td>Liste des numéros SIRET associés</td>
 </tr>
 <tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td>sirets.siret</td>
+<td>entier</td>
+<td>Numéro SIRET de l&#39;établissement</td>
 </tr>
 <tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td>sirets.type</td>
+<td>entier</td>
+<td>Code de type de l&#39;établissement</td>
+</tr>
+<tr>
+<td>links</td>
+<td>tableau</td>
+<td>Liste des liens associés</td>
+</tr>
+<tr>
+<td>links.rel</td>
+<td>chaîne de caractères</td>
+<td>Type de relation</td>
+</tr>
+<tr>
+<td>links.href</td>
+<td>chaîne de caractères</td>
+<td>URL vers les informations de l&#39;entreprise</td>
+</tr>
+<tr>
+<td>last_modified</td>
+<td>chaîne de caractères (date-heure)</td>
+<td>Date de dernière modification des informations de l&#39;entreprise</td>
+</tr>
+<tr>
+<td>enseigne</td>
+<td>chaîne de caractères</td>
+<td>Nom commercial de l&#39;entreprise</td>
+</tr>
+<tr>
+<td>sigle</td>
+<td>chaîne de caractères</td>
+<td>Sigle de l&#39;entreprise</td>
+</tr>
+<tr>
+<td>rcs</td>
+<td>chaîne de caractères</td>
+<td>Numéro d’immatriculation au registre du commerce et des sociétés (RCS)</td>
+</tr>
+<tr>
+<td>tva_number</td>
+<td>chaîne de caractères</td>
+<td>Numéro de TVA</td>
+</tr>
+<tr>
+<td>index_euro</td>
+<td>entier</td>
+<td>Indice européen pour les informations de l&#39;entreprise</td>
+</tr>
+<tr>
+<td>immatriculation_date</td>
+<td>chaîne de caractères (date)</td>
+<td>Date d’immatriculation</td>
+</tr>
+<tr>
+<td>naf_code</td>
+<td>chaîne de caractères</td>
+<td>Code NAF et description de l&#39;activité</td>
+</tr>
+<tr>
+<td>juridic_form</td>
+<td>chaîne de caractères</td>
+<td>Forme juridique de l&#39;entreprise</td>
+</tr>
+<tr>
+<td>type_etablissement</td>
+<td>chaîne de caractères</td>
+<td>Type d&#39;établissement</td>
+</tr>
+<tr>
+<td>categorie_full</td>
+<td>chaîne de caractères</td>
+<td>Description complète de la catégorie</td>
+</tr>
+<tr>
+<td>category_light</td>
+<td>chaîne de caractères</td>
+<td>Description légère de la catégorie</td>
+</tr>
+<tr>
+<td>capital_social</td>
+<td>entier</td>
+<td>Capital social de l&#39;entreprise</td>
+</tr>
+<tr>
+<td>fonds_propres</td>
+<td>entier</td>
+<td>Fonds propres</td>
+</tr>
+<tr>
+<td>ca_bilan</td>
+<td>entier</td>
+<td>Chiffre d’affaires selon le bilan</td>
+</tr>
+<tr>
+<td>effectif_precis</td>
+<td>entier</td>
+<td>Nombre précis d’employés</td>
+</tr>
+<tr>
+<td>resultat_net</td>
+<td>entier</td>
+<td>Résultat net</td>
+</tr>
+<tr>
+<td>resultat_exploitation</td>
+<td>entier</td>
+<td>Résultat d&#39;exploitation</td>
+</tr>
+<tr>
+<td>radiate</td>
+<td>booléen</td>
+<td>Indique si l&#39;entreprise est radiée</td>
+</tr>
+<tr>
+<td>indice_risque_info_legal</td>
+<td>chaîne de caractères</td>
+<td>Indice de risque légal</td>
+</tr>
+<tr>
+<td>indice_risque_score3</td>
+<td>entier</td>
+<td>Score de risque selon Score3</td>
+</tr>
+<tr>
+<td>anne_indice_risque_score3</td>
+<td>entier</td>
+<td>Année du score de risque Score3</td>
+</tr>
+<tr>
+<td>nb_filliales_directes</td>
+<td>entier</td>
+<td>Nombre de filiales directes</td>
+</tr>
+<tr>
+<td>nb_filliales_indirectes</td>
+<td>entier</td>
+<td>Nombre de filiales indirectes</td>
+</tr>
+<tr>
+<td>address</td>
+<td>chaîne de caractères</td>
+<td>Adresse complète</td>
+</tr>
+<tr>
+<td>zip</td>
+<td>chaîne de caractères</td>
+<td>Code postal</td>
+</tr>
+<tr>
+<td>city</td>
+<td>chaîne de caractères</td>
+<td>Ville</td>
+</tr>
+<tr>
+<td>department</td>
+<td>chaîne de caractères</td>
+<td>Département</td>
+</tr>
+<tr>
+<td>country</td>
+<td>chaîne de caractères</td>
+<td>Pays</td>
+</tr>
+<tr>
+<td>geo_lat</td>
+<td>nombre à virgule flottante</td>
+<td>Latitude géographique</td>
+</tr>
+<tr>
+<td>geo_long</td>
+<td>nombre à virgule flottante</td>
+<td>Longitude géographique</td>
+</tr>
+<tr>
+<td>telephone_number</td>
+<td>chaîne de caractères</td>
+<td>Numéro de téléphone</td>
+</tr>
+<tr>
+<td>fax_number</td>
+<td>chaîne de caractères</td>
+<td>Numéro de fax</td>
+</tr>
+<tr>
+<td>web_site</td>
+<td>chaîne de caractères</td>
+<td>URL du site web</td>
+</tr>
+<tr>
+<td>url_maps</td>
+<td>chaîne de caractères</td>
+<td>URL de la localisation sur Google Maps</td>
+</tr>
+<tr>
+<td>url_viadeo</td>
+<td>chaîne de caractères</td>
+<td>URL du profil Viadeo (si disponible)</td>
+</tr>
+<tr>
+<td>url_twitter</td>
+<td>chaîne de caractères</td>
+<td>URL du profil Twitter (si disponible)</td>
+</tr>
+<tr>
+<td>url_gnews</td>
+<td>chaîne de caractères</td>
+<td>URL vers Google News (si disponible)</td>
+</tr>
+<tr>
+<td>url_wikipedia</td>
+<td>chaîne de caractères</td>
+<td>URL de la page Wikipédia (si disponible)</td>
+</tr>
+<tr>
+<td>url_facebook</td>
+<td>chaîne de caractères</td>
+<td>URL du profil Facebook (si disponible)</td>
+</tr>
+<tr>
+<td>url_linkedin</td>
+<td>chaîne de caractères</td>
+<td>URL du profil LinkedIn (si disponible)</td>
+</tr>
+<tr>
+<td>url_score3</td>
+<td>chaîne de caractères</td>
+<td>URL du profil Score3</td>
+</tr>
+<tr>
+<td>url_scoopit</td>
+<td>chaîne de caractères</td>
+<td>URL du profil Scoop.it (si disponible)</td>
+</tr>
+<tr>
+<td>logo_url</td>
+<td>chaîne de caractères</td>
+<td>URL du logo de l&#39;entreprise</td>
+</tr>
+<tr>
+<td>email_contact</td>
+<td>chaîne de caractères</td>
+<td>Adresse e-mail de contact</td>
+</tr>
+<tr>
+<td>contacts</td>
+<td>tableau</td>
+<td>Liste des contacts de l&#39;entreprise</td>
+</tr>
+<tr>
+<td>contacts.name</td>
+<td>chaîne de caractères</td>
+<td>Nom de la personne de contact</td>
+</tr>
+<tr>
+<td>contacts.role</td>
+<td>chaîne de caractères</td>
+<td>Rôle ou fonction du contact</td>
+</tr>
+<tr>
+<td>nb_actes</td>
+<td>entier</td>
+<td>Nombre d&#39;actes liés à l&#39;entreprise</td>
+</tr>
+</tbody></table>
+<h2 id='find-list-of-companies'>Find list of companies</h2>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"cccid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR_519570196"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"siren"</span><span class="p">:</span><span class="w"> </span><span class="s2">"519570196"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"siret_siege"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51957019600047"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type_etablissement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"siege"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"raison_sociale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOVAWAY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"appartient_groupe"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"adresse_complete"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13 rue Jules Valles 69100 VILLEURBANNE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"adresse_postale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13 rue Jules Valles"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code_postal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"69100"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ville"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VILLEURBANNE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-07T15:35:45"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sigle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resume_activite"</span><span class="p">:</span><span class="w"> </span><span class="s2">"développement de logiciels métiers, applications et plateformes web"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pays"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"radiee"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nbre_signaux"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nbre_articles"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://pbs.twimg.com/profile_images/730069922391465984/iosvIlkK_400x400.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"links\""</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://decidentov2.local-centos7.com/companies/FR_519570196"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"extranet"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://decidentov2.local-centos7.com/app_dev.php/extranet/company/infoplusV2/FR_519570196"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves some company by its ID.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<style>
+  .method-get {
+    color: green;
+    font-weight: bold;
+  }
+</style>
+
+<p><span class="method-get">GET </span>
+<code>https://api.decidento.com/companies/v2</code></p>
+<h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Champ</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>siren</td>
+<td>Entier</td>
+<td>Identifiant SIREN unique</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur exemple : 327888111</td>
+<td></td>
+</tr>
+<tr>
+<td>siret</td>
+<td>Entier</td>
+<td>Identifiant SIRET unique</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur exemple : 32788811100447</td>
+<td></td>
+</tr>
+<tr>
+<td>term</td>
+<td>Chaîne de caractères</td>
+<td>Terme de recherche</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur exemple : CEGID</td>
+<td></td>
+</tr>
+<tr>
+<td>code_postal</td>
+<td>Chaîne de caractères</td>
+<td>Code postal</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur exemple : 69009</td>
+<td></td>
+</tr>
+<tr>
+<td>ville</td>
+<td>Chaîne de caractères</td>
+<td>Ville</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur exemple : Lyon</td>
+<td></td>
+</tr>
+<tr>
+<td>pays</td>
+<td>Chaîne de caractères</td>
+<td>Pays</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur exemple : France</td>
+<td></td>
+</tr>
+<tr>
+<td>naf</td>
+<td>Chaîne de caractères</td>
+<td>Code APE des entreprises</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur exemple : 70.10Z</td>
+<td></td>
+</tr>
+<tr>
+<td>radiee</td>
+<td>Entier</td>
+<td>Indique si l&#39;entreprise est radiée (1 pour oui)</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur par défaut : null</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur exemple : 1</td>
+<td></td>
+</tr>
+<tr>
+<td>appartient_groupe</td>
+<td>Entier</td>
+<td>Indique si l&#39;entreprise appartient à un groupe (1 pour oui)</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur par défaut : null</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur exemple : 1</td>
+<td></td>
+</tr>
+<tr>
+<td>derniere_maj</td>
+<td>Date</td>
+<td>Date de dernière mise à jour (plus grande que cette date)</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur exemple : 2021-11-12</td>
+<td></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Entier</td>
+<td>Nombre maximum d&#39;entreprises à retourner</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur par défaut : 100</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur exemple : 100</td>
+<td></td>
+</tr>
+<tr>
+<td>offset</td>
+<td>Entier</td>
+<td>Numéro de départ pour les entreprises retournées (utilisé pour la pagination)</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur par défaut : 1</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur exemple : 100</td>
+<td></td>
+</tr>
+<tr>
+<td>order</td>
+<td>Chaîne de caractères</td>
+<td>Champ d&#39;ordre pour les résultats</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeurs disponibles : raison_sociale_keyword, last_kpi.ca_bilan, last_kpi.effectif, cccid, last_modified</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur par défaut : last_modified</td>
+<td></td>
+</tr>
+<tr>
+<td>sort</td>
+<td>Chaîne de caractères</td>
+<td>Direction de tri (desc ou asc)</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeurs disponibles : desc, asc</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur par défaut : desc</td>
+<td></td>
+</tr>
+<tr>
+<td>meta</td>
+<td>Booléen</td>
+<td>Sortie des informations de pagination (false par défaut)</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur par défaut : false                                       </td>
+<td></td>
+</tr>
+<tr>
+<td>_format</td>
+<td>Chaîne de caractères</td>
+<td>Format de sortie (json ou xml)                                   </td>
+</tr>
+<tr>
+<td></td>
+<td>Valeurs disponibles : json, xml</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur par défaut : json</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='reponse-4'>Reponse</h3>
+<style>
+  .field {
+    font-weight: bold;
+  }
+</style>
+
+<table><thead>
+<tr>
+<th>Champ</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cccid</td>
+<td>Chaîne de caractères</td>
+<td>Identifiant CCCID de l&#39;entreprise</td>
+</tr>
+<tr>
+<td>siren</td>
+<td>Chaîne de caractères</td>
+<td>Identifiant SIREN de l&#39;entreprise</td>
+</tr>
+<tr>
+<td>siret_siege</td>
+<td>Chaîne de caractères</td>
+<td>Identifiant SIRET du siège social de l&#39;entreprise</td>
+</tr>
+<tr>
+<td>type_etablissement</td>
+<td>Chaîne de caractères</td>
+<td>Type d&#39;établissement (par exemple : siège)</td>
+</tr>
+<tr>
+<td>raison_sociale</td>
+<td>Chaîne de caractères</td>
+<td>Raison sociale de l&#39;entreprise</td>
+</tr>
+<tr>
+<td>appartient_groupe</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise appartient à un groupe (false pour non)</td>
+</tr>
+<tr>
+<td>adresse_complete</td>
+<td>Chaîne de caractères</td>
+<td>Adresse complète de l&#39;entreprise</td>
+</tr>
+<tr>
+<td>adresse_postale</td>
+<td>Chaîne de caractères</td>
+<td>Adresse postale de l&#39;entreprise</td>
+</tr>
+<tr>
+<td>code_postal</td>
+<td>Chaîne de caractères</td>
+<td>Code postal de l&#39;entreprise</td>
+</tr>
+<tr>
+<td>ville</td>
+<td>Chaîne de caractères</td>
+<td>Ville où se situe l&#39;entreprise</td>
+</tr>
+<tr>
+<td>last_modified</td>
+<td>Date</td>
+<td>Date de dernière modification</td>
+</tr>
+<tr>
+<td>sigle</td>
+<td>Chaîne de caractères</td>
+<td>Sigle de l&#39;entreprise (null si non applicable)</td>
+</tr>
+<tr>
+<td>resume_activite</td>
+<td>Chaîne de caractères</td>
+<td>Résumé de l&#39;activité de l&#39;entreprise</td>
+</tr>
+<tr>
+<td>pays</td>
+<td>Chaîne de caractères</td>
+<td>Pays où se situe l&#39;entreprise</td>
+</tr>
+<tr>
+<td>radiee</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise est radiée (false pour non)</td>
+</tr>
+<tr>
+<td>nbre_signaux</td>
+<td>Entier</td>
+<td>Nombre de signaux associés à l&#39;entreprise</td>
+</tr>
+<tr>
+<td>nbre_articles</td>
+<td>Entier</td>
+<td>Nombre d&#39;articles associés à l&#39;entreprise</td>
+</tr>
+<tr>
+<td>logo_url</td>
+<td>Chaîne de caractères</td>
+<td>URL du logo de l&#39;entreprise</td>
+</tr>
+<tr>
+<td>links</td>
+<td>Liste d&#39;objets</td>
+<td>Liens associés à l&#39;entreprise</td>
 </tr>
 </tbody></table>
 
