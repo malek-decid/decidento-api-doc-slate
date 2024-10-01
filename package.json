@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "openapi-to-md": "^1.0.24"
+  }
+}
