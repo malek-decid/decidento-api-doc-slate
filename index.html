@@ -286,7 +286,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-2597500e.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-212bbc73.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-966d6edc.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-024da600.js"></script>
 
@@ -310,10 +310,18 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#decidento-api-documentation" class="toc-h1 toc-link" data-title="Decidento API documentation">Decidento API documentation</a>
+            <a href="#documentation-decidento-api" class="toc-h1 toc-link" data-title="Documentation Decidento API">Documentation Decidento API</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#path-table" class="toc-h2 toc-link" data-title="Path Table">Path Table</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#authentification" class="toc-h1 toc-link" data-title="Authentification">Authentification</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#utilisation" class="toc-h2 toc-link" data-title="Utilisation">Utilisation</a>
                   </li>
               </ul>
           </li>
@@ -364,7 +372,18 @@
                     <a href="#get-last-signals" class="toc-h2 toc-link" data-title="Get last signals">Get last signals</a>
                   </li>
                   <li>
-                    <a href="#get-a-signal" class="toc-h2 toc-link" data-title="Get a signal">Get a signal</a>
+                    <a href="#get-a-signal-by-id" class="toc-h2 toc-link" data-title="Get a signal by ID">Get a signal by ID</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-list-of-signals-by-ids" class="toc-h2 toc-link" data-title="Get a list of signals by IDs">Get a list of signals by IDs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#signals-schemas" class="toc-h1 toc-link" data-title="Signals Schemas">Signals Schemas</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#signal_a" class="toc-h2 toc-link" data-title="Signal_A">Signal_A</a>
                   </li>
               </ul>
           </li>
@@ -377,15 +396,13 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='decidento-api-documentation'>Decidento API documentation</h1>
-<p>Welcome to the DECIDENTO API ! You can use our API to access Decidento endpoints, which can get information on various Articles, Companies, and Signals in our database.</p>
+        <h1 id='documentation-decidento-api'>Documentation Decidento API</h1>
+<p>Bienvenue sur l&#39;API DECIDENTO ! Vous pouvez utiliser l&#39;API pour accéder aux différents points (endpoints) de Decidento, qui permettent de récupérer des informations sur divers Articles, Entreprises, Signaux, et Contacts présents dans notre base de données.</p>
 
-<p>We have language bindings in Shell, PHP, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This API documentation page was created with <a href="https://api.decidento.com/" target="_blank" rel="noopener noreferrer">API Decidento</a>.</p>
+<p>Pour utiliser l&#39;API Decidento, consultez la <a href="#authentification">section d&#39;authentification</a> et rendez-vous sur <a href="https://api.decidento.com/" target="_blank" rel="noopener noreferrer">API Decidento</a> pour tester.</p>
 <h2 id='path-table'>Path Table</h2>
 <blockquote>
-<p>Json response structure will be displayed in this section !</p>
+<p>La structure de la réponse Json va être affiché dans cette section !</p>
 </blockquote>
 
 <style>
@@ -405,69 +422,78 @@
 <tr>
 <td><span class="method-get">GET</span></td>
 <td><a href="#get-all-articles">/articles</a></td>
-<td style="text-align: left">Get last articles</td>
+<td style="text-align: left">Obtenir les derniers articles</td>
 </tr>
 <tr>
 <td><span class="method-get">GET</span></td>
 <td><a href="#search-for-list-of-articles">/articles/search</a></td>
-<td style="text-align: left">Search for a list of articles</td>
+<td style="text-align: left">Rechercher une liste d&#39;articles</td>
 </tr>
 <tr>
 <td><span class="method-get">GET</span></td>
 <td><a href="#search-for-list-of-articles">/articles/search</a></td>
-<td style="text-align: left">Find article by ID</td>
+<td style="text-align: left">Trouver un article par ID</td>
 </tr>
 <tr>
 <td><span class="method-get">GET</span></td>
 <td><a href="#find-collection-of-articles-by-id">/articles/collection</a></td>
-<td style="text-align: left">Find a collection of articles by IDS</td>
+<td style="text-align: left">Trouver une collection d&#39;articles par IDS</td>
 </tr>
 <tr>
 <td><span class="method-get">GET</span></td>
 <td><a href="#get-all-companies">/companies</a></td>
-<td style="text-align: left">Search companies with parameters</td>
+<td style="text-align: left">Rechercher des entreprises avec des paramètres</td>
 </tr>
 <tr>
 <td><span class="method-get">GET</span></td>
 <td><a href="#find-company-by-id">/companies/{companyId}</a></td>
-<td style="text-align: left">Find company by ID</td>
+<td style="text-align: left">Trouver une entreprise par ID</td>
 </tr>
 <tr>
 <td><span class="method-get">GET</span></td>
 <td><a href="#find-list-of-companies-by-ids">/companies/collection</a></td>
-<td style="text-align: left">Find a collection of companies by IDS</td>
+<td style="text-align: left">Trouver une collection d&#39;entreprises par IDS</td>
 </tr>
 <tr>
 <td><span class="method-get">GET</span></td>
 <td><a href="#find-list-of-companies">/companies/v2</a></td>
-<td style="text-align: left">Search companies with parameters</td>
+<td style="text-align: left">Rechercher des entreprises avec des paramètres</td>
 </tr>
 <tr>
 <td><span class="method-get">GET</span></td>
 <td><a href="#find-company-by-its-unique-identifier-cccid">/companies/{companyCccid}/v2</a></td>
-<td style="text-align: left">Find company by CCCID</td>
+<td style="text-align: left">Trouver une entreprise par CCCID</td>
 </tr>
 <tr>
 <td><span class="method-get">GET</span></td>
 <td><a href="#find-a-collection-of-companies-by-their-siren">/companies/collection/v2</a></td>
-<td style="text-align: left">Find a collection of companies by SIREN</td>
+<td style="text-align: left">Trouver une collection d&#39;entreprises par SIREN</td>
 </tr>
 <tr>
 <td><span class="method-get">GET</span></td>
-<td><a href="#getsignals">/signals</a></td>
-<td style="text-align: left">Get last signals</td>
+<td><a href="#get-last-signals">/signals</a></td>
+<td style="text-align: left">Obtenir les derniers signaux</td>
 </tr>
 <tr>
 <td><span class="method-get">GET</span></td>
-<td><a href="#getsignalssignalid">/signals/{signalId}</a></td>
-<td style="text-align: left">Find signal by ID</td>
+<td><a href="#get-a-signal-by-id">/signals/{signalId}</a></td>
+<td style="text-align: left">Trouver un signal par ID</td>
 </tr>
 <tr>
 <td><span class="method-get">GET</span></td>
-<td><a href="#getsignalscollection">/signals/collection</a></td>
-<td style="text-align: left">Find collection of signals by IDS</td>
+<td><a href="#get-a-list-of-signals-by-ids">/signals/collection</a></td>
+<td style="text-align: left">Trouver une collection de signaux par IDS</td>
 </tr>
 </tbody></table>
+<h1 id='authentification'>Authentification</h1><h2 id='utilisation'>Utilisation</h2>
+<p>Pour accéder aux services de l&#39;API, vous devez d&#39;abord obtenir une clé d&#39;API. <a href="https://platform.decidento.com/" target="_blank" rel="noopener noreferrer">Enregistrez-vous ici</a> pour créer un compte. Une fois que vous êtes inscrit, vous pourrez récupérer vos clés d&#39;authentification depuis votre <strong>dashboard personnel</strong>.</p>
+<h3 id='comment-s-39-authentifier'>Comment s&#39;authentifier ?</h3>
+<p>Pour chaque requête à <a href="https://api.decidento.com/" target="_blank" rel="noopener noreferrer">l&#39;API</a>, vous devez inclure les en-têtes d&#39;authentification suivants :</p>
+
+<ul>
+<li><strong>X-AUTH-ID</strong> : C&#39;est l&#39;identifiant unique lié à votre compte, obtenu après inscription.</li>
+<li><strong>X-AUTH-TOKEN</strong> : Ce jeton est associé à votre compte et garantit l&#39;accès sécurisé aux services de l&#39;API.</li>
+</ul>
 <h1 id='articles'>Articles</h1>
 <p>L&#39;API &quot;Articles&quot; permet d&#39;interagir avec des articles via différentes requêtes HTTP. Vous pouvez récupérer les derniers articles, effectuer des recherches, ou consulter des collections d&#39;articles à l&#39;aide d&#39;IDs spécifiques. Voici les principales routes :</p>
 
@@ -732,65 +758,105 @@
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
-<th>Field</th>
+<th>Champ</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>term</td>
-<td>string (query)</td>
-<td>Search term (keywords, siren, social name, ...)</td>
+<td>chaîne de caractères</td>
+<td>Terme de recherche (mots-clés, siren, nom social, ...)</td>
 </tr>
 <tr>
 <td>siren</td>
-<td>integer ($int9)</td>
-<td>Siren of main companies related to article / signals (format: ^([0-9]{9}))</td>
+<td>entier</td>
+<td>Siren des entreprises principales liées à l&#39;article / aux signaux (format : ^([0-9]{9}))</td>
 </tr>
 <tr>
 <td>date_begin</td>
-<td>string (query)</td>
-<td>Begin date published (ex: 2019-03-03)</td>
+<td>chaîne de caractères</td>
+<td>Date de début de publication (ex: 2019-03-03)</td>
 </tr>
 <tr>
 <td>date_end</td>
-<td>string (query)</td>
-<td>End date published (ex: 2019-03-03)</td>
+<td>chaîne de caractères</td>
+<td>Date de fin de publication (ex: 2019-03-03)</td>
 </tr>
 <tr>
 <td>limit</td>
-<td>integer (query)</td>
-<td>The maximum records to return. If the value exceeds the maximum (200), the maximum value will be used. Default value: 100</td>
+<td>entier</td>
+<td>Nombre maximal d&#39;enregistrements à retourner. Si la valeur dépasse le maximum (200), le maximum sera utilisé.</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur par défaut : 100</td>
+<td></td>
 </tr>
 <tr>
 <td>offset</td>
-<td>integer (query)</td>
-<td>Start number for returned articles. Useful for paginate results. Default value: 1</td>
+<td>entier</td>
+<td>Numéro de départ pour les articles retournés. Utile pour paginer les résultats.</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur par défaut : 1</td>
+<td></td>
 </tr>
 <tr>
 <td>order</td>
-<td>string (query)</td>
-<td>Order Field. Available values: publishedAt. Default value: publishedAt</td>
+<td>chaîne de caractères</td>
+<td>Champ de tri.</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur par défaut : publishedAt</td>
+<td></td>
 </tr>
 <tr>
 <td>sort</td>
-<td>string (query)</td>
-<td>Sorting direction. Available values: desc, asc. Default value: desc</td>
+<td>chaîne de caractères</td>
+<td>Sens du tri.</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeurs disponibles : desc, asc.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur par défaut : desc</td>
+<td></td>
 </tr>
 <tr>
 <td>meta</td>
-<td>boolean (query)</td>
-<td>Output paginate info meta. Default value: false</td>
+<td>booléen</td>
+<td>Afficher les informations de pagination.</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur par défaut : false</td>
+<td></td>
 </tr>
 <tr>
 <td>_format</td>
-<td>string (query)</td>
-<td>Output format. Available values: json, xml. Default value: json</td>
+<td>chaîne de caractères</td>
+<td>Format de sortie.</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeurs disponibles : json, xml.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur par défaut : json</td>
+<td></td>
 </tr>
 <tr>
 <td>X-API-VERSION</td>
-<td>string (header)</td>
-<td>X-API-VERSION</td>
+<td>chaîne de caractères</td>
+<td>Version de l&#39;API (X-API-VERSION)</td>
 </tr>
 </tbody></table>
 <h3 id='reponse'>Reponse</h3>
@@ -1539,7 +1605,7 @@
 <p>This query returns JSON structured like : <a href="#get-all-articles">this</a></p>
 </blockquote>
 
-<p>This endpoint retrieves a list of articles by IDs.</p>
+<p>This endpoint retrieves a list of articles by an array of IDs.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <style>
   .method-get {
@@ -4076,169 +4142,62 @@
 <blockquote>
 <p>This query returns JSON structured like this:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"last_article_pubdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26/03/2021"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26/03/2021"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"last_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26/03/2021"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"follow_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26/03/2022"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"label_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Détecté"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"company_main"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">72242</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"siren"</span><span class="p">:</span><span class="w"> </span><span class="mi">831946488</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800010</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"siege"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"social_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN TOURISME LAB NIMES METROPOLE"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"sirets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800123</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">75008</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800128</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">75019</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/2438"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/24384"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"company_alt"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">72242</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"siren"</span><span class="p">:</span><span class="w"> </span><span class="mi">831946488</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800010</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"siege"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"social_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN TOURISME LAB NIMES METROPOLE"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"sirets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800123</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">75008</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800128</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">75019</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/2438"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/24384"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"continents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"countries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"departments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">92</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"dep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hauts de Seine"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Île-de-France"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Parcoul-Chenaud"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24410"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"insee_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24316"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"departement_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"city_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"city_zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"surface_totale_facilities"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"surface_terrain"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"surface_bati"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"date_start_facilities"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-10-02T14:30:44.398Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"date_end_facilities_building"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-10-02T14:30:44.398Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cout_total_facilities_ground"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cout_total_facilities_construction"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cout_total_facilities"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"maitre_ouvrage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">72242</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"siren"</span><span class="p">:</span><span class="w"> </span><span class="mi">831946488</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800010</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"siege"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"social_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN TOURISME LAB NIMES METROPOLE"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"sirets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1118256</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800123</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">75008</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800128</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">75019</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Construction"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Détecté"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/2438"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/24384"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"maitre_oeuvre"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">72242</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"siren"</span><span class="p">:</span><span class="w"> </span><span class="mi">831946488</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800010</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"siege"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"social_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN TOURISME LAB NIMES METROPOLE"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"sirets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800123</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">75008</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800128</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">75019</span><span class="w">
+        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/signals/1118256"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"departments_list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"dep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Drôme"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Auvergne-Rhône-Alpes"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"last_article_pubdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21/01/2023"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21/01/2023"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03/10/2024"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1118259</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aménagement &amp; urbanisme"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Détecté"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/2438"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/24384"</span><span class="w">
+        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/signals/1118259"</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"type_projet_facilities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"step_projet_facilities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"building_permit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"permit_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08611322A0002"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"permis_amenager"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"departments_list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"dep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Côtes d'Armor"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bretagne"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"last_article_pubdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29/09/2024"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29/09/2024"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03/10/2024"</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of signals according to the query parameters shown below.</p>
 <h3 id='http-request'>HTTP Request</h3>
@@ -4317,10 +4276,10 @@
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='response'>Response</h3>
+<h3 id='response-2-signals'>Response (2 signals)</h3>
 <table><thead>
 <tr>
-<th>Nom</th>
+<th>Champ</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
@@ -4328,421 +4287,751 @@
 <tr>
 <td>id</td>
 <td>Entier</td>
-<td>Identifiant du projet</td>
-</tr>
-<tr>
-<td>last_article_pubdate</td>
-<td>Chaîne (date)</td>
-<td>Date de publication du dernier article</td>
-</tr>
-<tr>
-<td>creation_date</td>
-<td>Chaîne (date)</td>
-<td>Date de création du projet</td>
-</tr>
-<tr>
-<td>last_update</td>
-<td>Chaîne (date)</td>
-<td>Date de la dernière mise à jour du projet</td>
-</tr>
-<tr>
-<td>follow_date</td>
-<td>Chaîne (date)</td>
-<td>Date de suivi du projet</td>
+<td>Identifiant unique du signal.</td>
 </tr>
 <tr>
 <td>type</td>
-<td>Chaîne</td>
-<td>Type du projet</td>
+<td>Tableau</td>
+<td>Type d&#39;activité associée au signal.</td>
 </tr>
 <tr>
-<td>label_type</td>
-<td>Chaîne</td>
-<td>Libellé du type de projet</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- id</td>
+<td>Entier</td>
+<td>Identifiant du type (ex: 2).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- code</td>
+<td>Chaîne de caractères</td>
+<td>Code du type (ex: B).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- label</td>
+<td>Chaîne de caractères</td>
+<td>Libellé du type (ex: Construction).</td>
 </tr>
 <tr>
 <td>status</td>
-<td>Chaîne</td>
-<td>Statut du projet (ex: &quot;Détecté&quot;)</td>
+<td>Chaîne de caractères</td>
+<td>Statut du signal (ex: Détecté).</td>
 </tr>
 <tr>
-<td><strong>company_main</strong></td>
-<td>Objet</td>
-<td>Informations sur la société principale</td>
+<td>links</td>
+<td>Tableau</td>
+<td>Liens associés au signal.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;company_main.id</td>
-<td>Entier</td>
-<td>Identifiant de la société principale</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- rel</td>
+<td>Chaîne de caractères</td>
+<td>Relation du lien (ex: self).</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;company_main.siren</td>
-<td>Entier</td>
-<td>SIREN de la société principale</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- href</td>
+<td>Chaîne de caractères</td>
+<td>URL du lien (ex: https://api.decidento.com/signals/1118256).</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;company_main.siret</td>
-<td>Entier</td>
-<td>SIRET de la société principale</td>
+<td>departments_list</td>
+<td>Tableau</td>
+<td>Liste des départements associés au signal.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;company_main.siege</td>
-<td>Booléen</td>
-<td>Indique si l&#39;établissement est le siège social</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- code</td>
+<td>Chaîne de caractères</td>
+<td>Code du département (ex: 26).</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;company_main.social_name</td>
-<td>Chaîne</td>
-<td>Nom de la société principale</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- dep</td>
+<td>Chaîne de caractères</td>
+<td>Nom du département (ex: Drôme).</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;company_main.sirets</td>
-<td>Tableau d&#39;objet</td>
-<td>Liste des SIRET secondaires</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- region</td>
+<td>Chaîne de caractères</td>
+<td>Région associée (ex: Auvergne-Rhône-Alpes).</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;company_main.sirets.siret</td>
-<td>Entier</td>
-<td>Numéro SIRET secondaire</td>
+<td>last_article_pubdate</td>
+<td>Date</td>
+<td>Date de publication du dernier article lié au signal (ex: 21/01/2023).</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;company_main.sirets.type</td>
-<td>Entier</td>
-<td>Type de SIRET</td>
+<td>creation_date</td>
+<td>Date</td>
+<td>Date de création du signal (ex: 21/01/2023).</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;company_main.links</td>
-<td>Tableau d&#39;objet</td>
-<td>Liens associés à la société principale</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;company_main.links.rel</td>
-<td>Chaîne</td>
-<td>Type de lien (ex: &quot;self&quot;)</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;company_main.links.href</td>
-<td>Chaîne</td>
-<td>URL du lien</td>
-</tr>
-<tr>
-<td><strong>company_alt</strong></td>
-<td>Objet</td>
-<td>Informations sur les sociétés alternatives (similaire à company_main)</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;company_alt.id</td>
-<td>Entier</td>
-<td>Identifiant de la société alternative</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;company_alt.siren</td>
-<td>Entier</td>
-<td>SIREN de la société alternative</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;company_alt.siret</td>
-<td>Entier</td>
-<td>SIRET de la société alternative</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;company_alt.siege</td>
-<td>Booléen</td>
-<td>Indique si l&#39;établissement est le siège social</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;company_alt.social_name</td>
-<td>Chaîne</td>
-<td>Nom de la société alternative</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;company_alt.sirets</td>
-<td>Tableau d&#39;objet</td>
-<td>Liste des SIRET secondaires de la société alternative</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;company_alt.sirets.siret</td>
-<td>Entier</td>
-<td>Numéro SIRET secondaire</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;company_alt.sirets.type</td>
-<td>Entier</td>
-<td>Type de SIRET</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;company_alt.links</td>
-<td>Tableau d&#39;objet</td>
-<td>Liens associés à la société alternative</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;company_alt.links.rel</td>
-<td>Chaîne</td>
-<td>Type de lien (ex: &quot;self&quot;)</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;company_alt.links.href</td>
-<td>Chaîne</td>
-<td>URL du lien</td>
-</tr>
-<tr>
-<td>continents</td>
-<td>Tableau de chaînes</td>
-<td>Continents associés au projet</td>
-</tr>
-<tr>
-<td>countries</td>
-<td>Tableau de chaînes</td>
-<td>Pays associés au projet</td>
-</tr>
-<tr>
-<td><strong>departments</strong></td>
-<td>Objet</td>
-<td>Départements associés au projet</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;departments.code</td>
-<td>Entier</td>
-<td>Code du département</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;departments.dep</td>
-<td>Chaîne</td>
-<td>Nom du département</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;departments.region</td>
-<td>Chaîne</td>
-<td>Nom de la région</td>
-</tr>
-<tr>
-<td><strong>city</strong></td>
-<td>Objet</td>
-<td>Ville associée au projet</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;city.label</td>
-<td>Chaîne</td>
-<td>Nom de la ville</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;city.zip_code</td>
-<td>Chaîne</td>
-<td>Code postal de la ville</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;city.insee_code</td>
-<td>Chaîne</td>
-<td>Code INSEE de la ville</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;city.departement_code</td>
-<td>Chaîne</td>
-<td>Code du département</td>
-</tr>
-<tr>
-<td>city_label</td>
-<td>Chaîne</td>
-<td>Libellé de la ville</td>
-</tr>
-<tr>
-<td>city_zip_code</td>
-<td>Chaîne</td>
-<td>Code postal de la ville</td>
-</tr>
-<tr>
-<td>surface_totale_facilities</td>
-<td>Entier</td>
-<td>Surface totale des installations</td>
-</tr>
-<tr>
-<td>surface_terrain</td>
-<td>Entier</td>
-<td>Surface du terrain</td>
-</tr>
-<tr>
-<td>surface_bati</td>
-<td>Entier</td>
-<td>Surface bâtie</td>
-</tr>
-<tr>
-<td>date_start_facilities</td>
-<td>Chaîne (date)</td>
-<td>Date de début des installations</td>
-</tr>
-<tr>
-<td>date_end_facilities_building</td>
-<td>Chaîne (date)</td>
-<td>Date de fin de construction</td>
-</tr>
-<tr>
-<td>cout_total_facilities_ground</td>
-<td>Entier</td>
-<td>Coût total des installations au sol</td>
-</tr>
-<tr>
-<td>cout_total_facilities_construction</td>
-<td>Entier</td>
-<td>Coût total des constructions</td>
-</tr>
-<tr>
-<td>cout_total_facilities</td>
-<td>Entier</td>
-<td>Coût total des installations</td>
-</tr>
-<tr>
-<td><strong>maitre_ouvrage</strong></td>
-<td>Objet</td>
-<td>Informations sur le maître d&#39;ouvrage (similaire à company_main)</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;maitre_ouvrage.id</td>
-<td>Entier</td>
-<td>Identifiant du maître d&#39;ouvrage</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;maitre_ouvrage.siren</td>
-<td>Entier</td>
-<td>SIREN du maître d&#39;ouvrage</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;maitre_ouvrage.siret</td>
-<td>Entier</td>
-<td>SIRET du maître d&#39;ouvrage</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;maitre_ouvrage.siege</td>
-<td>Booléen</td>
-<td>Indique si l&#39;établissement est le siège social</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;maitre_ouvrage.social_name</td>
-<td>Chaîne</td>
-<td>Nom du maître d&#39;ouvrage</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;maitre_ouvrage.sirets</td>
-<td>Tableau d&#39;objet</td>
-<td>Liste des SIRET du maître d&#39;ouvrage</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maitre_ouvrage.sirets.siret</td>
-<td>Entier</td>
-<td>Numéro SIRET</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maitre_ouvrage.sirets.type</td>
-<td>Entier</td>
-<td>Type de SIRET</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;maitre_ouvrage.links</td>
-<td>Tableau d&#39;objet</td>
-<td>Liens associés au maître d&#39;ouvrage</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maitre_ouvrage.links.rel</td>
-<td>Chaîne</td>
-<td>Type de lien (ex: &quot;self&quot;)</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maitre_ouvrage.links.href</td>
-<td>Chaîne</td>
-<td>URL du lien</td>
-</tr>
-<tr>
-<td><strong>maitre_oeuvre</strong></td>
-<td>Objet</td>
-<td>Informations sur le maître d&#39;œuvre (similaire à company_main)</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;maitre_oeuvre.id</td>
-<td>Entier</td>
-<td>Identifiant du maître d&#39;œuvre</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;maitre_oeuvre.siren</td>
-<td>Entier</td>
-<td>SIREN du maître d&#39;œuvre</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;maitre_oeuvre.siret</td>
-<td>Entier</td>
-<td>SIRET du maître d&#39;œuvre</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;maitre_oeuvre.siege</td>
-<td>Booléen</td>
-<td>Indique si l&#39;établissement est le siège social</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;maitre_oeuvre.social_name</td>
-<td>Chaîne</td>
-<td>Nom du maître d&#39;œuvre</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;maitre_oeuvre.sirets</td>
-<td>Tableau d&#39;objet</td>
-<td>Liste des SIRET du maître d&#39;œuvre</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maitre_oeuvre.sirets.siret</td>
-<td>Entier</td>
-<td>Numéro SIRET</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maitre_oeuvre.sirets.type</td>
-<td>Entier</td>
-<td>Type de SIRET</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;maitre_oeuvre.links</td>
-<td>Tableau d&#39;objet</td>
-<td>Liens associés au maître d&#39;œuvre</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maitre_oeuvre.links.rel</td>
-<td>Chaîne</td>
-<td>Type de lien (ex: &quot;self&quot;)</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maitre_oeuvre.links.href</td>
-<td>Chaîne</td>
-<td>URL du lien</td>
-</tr>
-<tr>
-<td>type_projet_facilities</td>
-<td>Tableau de chaînes</td>
-<td>Type de projet d&#39;installation</td>
-</tr>
-<tr>
-<td>step_projet_facilities</td>
-<td>Tableau de chaînes</td>
-<td>Étape du projet d&#39;installation</td>
-</tr>
-<tr>
-<td><strong>building_permit</strong></td>
-<td>Objet</td>
-<td>Informations sur le permis de construire</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;building_permit.permit_number</td>
-<td>Chaîne</td>
-<td>Numéro du permis de construire</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;building_permit.type</td>
-<td>Chaîne</td>
-<td>Type de permis (ex: &quot;permis_amenager&quot;)</td>
+<td>last_update</td>
+<td>Date</td>
+<td>Date de la dernière mise à jour du signal (ex: 03/10/2024).</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-signal'>Get a signal</h2>
+<h2 id='get-a-signal-by-id'>Get a signal by ID</h2>
 <blockquote>
 <p>This query returns JSON structured like this :</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"departments_list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pyrénées Atlantiques"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nouvelle Aquitaine"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"last_article_pubdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"04/04/2024"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03/04/2024"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"last_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03/04/2024"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"articles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">756220</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Interruption de la production à Mont pour Vertex Bioenergie"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"pub_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"04/04/2024"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/articles/756220"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"extranet"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://platform.decidento.com/extranet/article/756220"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"follow_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"K1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"label_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Investissements"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Détecté"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"company_main"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">24531</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"siren"</span><span class="p">:</span><span class="w"> </span><span class="s2">"481741841"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48174184100037"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cccid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR_481741841"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"social_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BIOENERGIE DU SUD-OUEST"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"siege"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"main"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sirets"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/24531"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self-v2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/FR_481741841/v2"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"extranet"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://platform.decidento.com/extranet/company/infoplus/24531"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"extranet-v2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://platform.decidento.com/extranet/company/infoplusV2/FR_481741841"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"self_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/24531"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"self_v2_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/FR_481741841/v2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"extranet_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://platform.decidento.com/extranet/company/infoplus/24531"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"extranet_v2_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://platform.decidento.com/extranet/company/infoplusV2/FR_481741841"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">24531</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"siren"</span><span class="p">:</span><span class="w"> </span><span class="s2">"481741841"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48174184100037"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cccid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR_481741841"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"social_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BIOENERGIE DU SUD-OUEST"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"siege"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"main"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sirets"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/24531"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self-v2"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/FR_481741841/v2"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"extranet"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://platform.decidento.com/extranet/company/infoplus/24531"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"extranet-v2"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://platform.decidento.com/extranet/company/infoplusV2/FR_481741841"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"self_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/24531"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"self_v2_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/FR_481741841/v2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"extranet_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://platform.decidento.com/extranet/company/infoplus/24531"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"extranet_v2_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://platform.decidento.com/extranet/company/infoplusV2/FR_481741841"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"continents"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"countries"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"departments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Pyrénées Atlantiques"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"city_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"city_zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nature: Plan d'investissement sans détail | Stade: En cours | Localisation du signal: Pyrénées Atlantiques"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"step"</span><span class="p">:</span><span class="w"> </span><span class="s2">"En cours"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"last_article_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://platform.decidento.com/extranet/article/756220"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sectors"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date_start_invest"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date_end_invest"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cout_total_invest"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nature_invest"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Plan d'investissement sans détail"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"step_projet_invest"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"En cours"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a signal according to ID.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<style>
+  .method-get {
+    color: green;
+    font-weight: bold;
+  }
+</style>
+
+<p><span class="method-get">GET </span>
+<code>
+ https://api.decidento.com/signals/{signalId}
+</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Champ</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>signalId *</td>
+<td>entier</td>
+<td>l&#39;id du signal</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Champ</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Entier</td>
+<td>Identifiant unique de l&#39;investissement.</td>
+</tr>
+<tr>
+<td>departments_list</td>
+<td>Tableau</td>
+<td>Liste des départements associés à l&#39;investissement (ex: Pyrénées Atlantiques).</td>
+</tr>
+<tr>
+<td>last_article_pubdate</td>
+<td>Date</td>
+<td>Date de publication du dernier article lié à l&#39;investissement (ex: 04/04/2024).</td>
+</tr>
+<tr>
+<td>creation_date</td>
+<td>Date</td>
+<td>Date de création de l&#39;enregistrement de l&#39;investissement (ex: 03/04/2024).</td>
+</tr>
+<tr>
+<td>last_update</td>
+<td>Date</td>
+<td>Date de la dernière mise à jour de l&#39;enregistrement (ex: 03/04/2024).</td>
+</tr>
+<tr>
+<td>articles</td>
+<td>Tableau</td>
+<td>Liste des articles liés à l&#39;investissement.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- id</td>
+<td>Entier</td>
+<td>Identifiant de l&#39;article (ex: 756220).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- title</td>
+<td>Chaîne de caractères</td>
+<td>Titre de l&#39;article (ex: Interruption de la production à Mont pour Vertex Bioenergie).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- pub_date</td>
+<td>Date</td>
+<td>Date de publication de l&#39;article (ex: 04/04/2024).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- links</td>
+<td>Tableau</td>
+<td>Liens associés à l&#39;article (ex: self, extranet).</td>
+</tr>
+<tr>
+<td>follow_date</td>
+<td>Date ou null</td>
+<td>Date de suivi de l&#39;investissement, s&#39;il y en a (nullable).</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Chaîne de caractères</td>
+<td>Type d&#39;investissement (ex: K1).</td>
+</tr>
+<tr>
+<td>label_type</td>
+<td>Chaîne de caractères</td>
+<td>Type d&#39;étiquette de l&#39;investissement (ex: Investissements).</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Chaîne de caractères</td>
+<td>Statut de l&#39;investissement (ex: Détecté).</td>
+</tr>
+<tr>
+<td>company_main</td>
+<td>Objet</td>
+<td>Informations sur l&#39;entreprise principale associée à l&#39;investissement.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- id</td>
+<td>Entier</td>
+<td>Identifiant de l&#39;entreprise (ex: 24531).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- siren</td>
+<td>Chaîne de caractères</td>
+<td>Code SIREN de l&#39;entreprise (ex: 481741841).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- siret</td>
+<td>Chaîne de caractères</td>
+<td>Code SIRET de l&#39;entreprise (ex: 48174184100037).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- cccid</td>
+<td>Chaîne de caractères</td>
+<td>Code CCCID de l&#39;entreprise (ex: FR_481741841).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- social_name</td>
+<td>Chaîne de caractères</td>
+<td>Raison sociale de l&#39;entreprise (ex: BIOENERGIE DU SUD-OUEST).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- siege</td>
+<td>Booléen</td>
+<td>Indique si c&#39;est le siège de l&#39;entreprise (true/false).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- type</td>
+<td>Chaîne de caractères</td>
+<td>Type d&#39;entreprise (ex: main).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- links</td>
+<td>Tableau</td>
+<td>Liens relatifs à l&#39;entreprise (ex: self, extranet).</td>
+</tr>
+<tr>
+<td>departments</td>
+<td>Tableau</td>
+<td>Liste des départements associés (ex: Pyrénées Atlantiques).</td>
+</tr>
+<tr>
+<td>city_label</td>
+<td>Chaîne de caractères</td>
+<td>Libellé de la ville (nullable).</td>
+</tr>
+<tr>
+<td>city_zip_code</td>
+<td>Chaîne de caractères</td>
+<td>Code postal de la ville (nullable).</td>
+</tr>
+<tr>
+<td>summary</td>
+<td>Chaîne de caractères</td>
+<td>Résumé de l&#39;investissement (ex: Nature: Plan d&#39;investissement sans détail</td>
+</tr>
+<tr>
+<td>step</td>
+<td>Chaîne de caractères</td>
+<td>Étape actuelle de l&#39;investissement (ex: En cours).</td>
+</tr>
+<tr>
+<td>last_article_link</td>
+<td>Chaîne de caractères</td>
+<td>Lien vers le dernier article publié (ex: https://platform.decidento.com/extranet/article/756220).</td>
+</tr>
+<tr>
+<td>sectors</td>
+<td>Tableau ou null</td>
+<td>Secteurs d&#39;activité liés à l&#39;investissement (nullable).</td>
+</tr>
+<tr>
+<td>date_start_invest</td>
+<td>Date ou null</td>
+<td>Date de début de l&#39;investissement (nullable).</td>
+</tr>
+<tr>
+<td>date_end_invest</td>
+<td>Date ou null</td>
+<td>Date de fin de l&#39;investissement (nullable).</td>
+</tr>
+<tr>
+<td>cout_total_invest</td>
+<td>Entier ou null</td>
+<td>Coût total de l&#39;investissement (nullable).</td>
+</tr>
+<tr>
+<td>nature_invest</td>
+<td>Tableau</td>
+<td>Nature de l&#39;investissement (ex: Plan d&#39;investissement sans détail).</td>
+</tr>
+<tr>
+<td>step_projet_invest</td>
+<td>Tableau</td>
+<td>Étapes du projet d&#39;investissement (ex: En cours).</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-list-of-signals-by-ids'>Get a list of signals by IDs</h2>
+<blockquote>
+<p>This query returns JSON structured like this :</p>
+</blockquote>
+
+<p>This endpoint retrieves a list of signals according to an array of IDs.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<style>
+  .method-get {
+    color: green;
+    font-weight: bold;
+  }
+</style>
+
+<p><span class="method-get">GET </span>
+<code>
+ https://api.decidento.com/signals/collection/
+</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Champ</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>listIds  *</td>
+<td>entier</td>
+<td>les IDs des signaux</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th>Champ</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Entier</td>
+<td>Identifiant unique de l&#39;investissement.</td>
+</tr>
+<tr>
+<td>departments_list</td>
+<td>Tableau</td>
+<td>Liste des départements associés à l&#39;investissement (ex: Pyrénées Atlantiques).</td>
+</tr>
+<tr>
+<td>last_article_pubdate</td>
+<td>Date</td>
+<td>Date de publication du dernier article lié à l&#39;investissement (ex: 04/04/2024).</td>
+</tr>
+<tr>
+<td>creation_date</td>
+<td>Date</td>
+<td>Date de création de l&#39;enregistrement de l&#39;investissement (ex: 03/04/2024).</td>
+</tr>
+<tr>
+<td>last_update</td>
+<td>Date</td>
+<td>Date de la dernière mise à jour de l&#39;enregistrement (ex: 03/04/2024).</td>
+</tr>
+<tr>
+<td>articles</td>
+<td>Tableau</td>
+<td>Liste des articles liés à l&#39;investissement.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- id</td>
+<td>Entier</td>
+<td>Identifiant de l&#39;article (ex: 756220).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- title</td>
+<td>Chaîne de caractères</td>
+<td>Titre de l&#39;article (ex: Interruption de la production à Mont pour Vertex Bioenergie).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- pub_date</td>
+<td>Date</td>
+<td>Date de publication de l&#39;article (ex: 04/04/2024).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- links</td>
+<td>Tableau</td>
+<td>Liens associés à l&#39;article (ex: self, extranet).</td>
+</tr>
+<tr>
+<td>follow_date</td>
+<td>Date ou null</td>
+<td>Date de suivi de l&#39;investissement, s&#39;il y en a (nullable).</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Chaîne de caractères</td>
+<td>Type d&#39;investissement (ex: K1).</td>
+</tr>
+<tr>
+<td>label_type</td>
+<td>Chaîne de caractères</td>
+<td>Type d&#39;étiquette de l&#39;investissement (ex: Investissements).</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Chaîne de caractères</td>
+<td>Statut de l&#39;investissement (ex: Détecté).</td>
+</tr>
+<tr>
+<td>company_main</td>
+<td>Objet</td>
+<td>Informations sur l&#39;entreprise principale associée à l&#39;investissement.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- id</td>
+<td>Entier</td>
+<td>Identifiant de l&#39;entreprise (ex: 24531).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- siren</td>
+<td>Chaîne de caractères</td>
+<td>Code SIREN de l&#39;entreprise (ex: 481741841).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- siret</td>
+<td>Chaîne de caractères</td>
+<td>Code SIRET de l&#39;entreprise (ex: 48174184100037).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- cccid</td>
+<td>Chaîne de caractères</td>
+<td>Code CCCID de l&#39;entreprise (ex: FR_481741841).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- social_name</td>
+<td>Chaîne de caractères</td>
+<td>Raison sociale de l&#39;entreprise (ex: BIOENERGIE DU SUD-OUEST).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- siege</td>
+<td>Booléen</td>
+<td>Indique si c&#39;est le siège de l&#39;entreprise (true/false).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- type</td>
+<td>Chaîne de caractères</td>
+<td>Type d&#39;entreprise (ex: main).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;- links</td>
+<td>Tableau</td>
+<td>Liens relatifs à l&#39;entreprise (ex: self, extranet).</td>
+</tr>
+<tr>
+<td>departments</td>
+<td>Tableau</td>
+<td>Liste des départements associés (ex: Pyrénées Atlantiques).</td>
+</tr>
+<tr>
+<td>city_label</td>
+<td>Chaîne de caractères</td>
+<td>Libellé de la ville (nullable).</td>
+</tr>
+<tr>
+<td>city_zip_code</td>
+<td>Chaîne de caractères</td>
+<td>Code postal de la ville (nullable).</td>
+</tr>
+<tr>
+<td>summary</td>
+<td>Chaîne de caractères</td>
+<td>Résumé de l&#39;investissement (ex: Nature: Plan d&#39;investissement sans détail</td>
+</tr>
+<tr>
+<td>step</td>
+<td>Chaîne de caractères</td>
+<td>Étape actuelle de l&#39;investissement (ex: En cours).</td>
+</tr>
+<tr>
+<td>last_article_link</td>
+<td>Chaîne de caractères</td>
+<td>Lien vers le dernier article publié (ex: https://platform.decidento.com/extranet/article/756220).</td>
+</tr>
+<tr>
+<td>sectors</td>
+<td>Tableau ou null</td>
+<td>Secteurs d&#39;activité liés à l&#39;investissement (nullable).</td>
+</tr>
+<tr>
+<td>date_start_invest</td>
+<td>Date ou null</td>
+<td>Date de début de l&#39;investissement (nullable).</td>
+</tr>
+<tr>
+<td>date_end_invest</td>
+<td>Date ou null</td>
+<td>Date de fin de l&#39;investissement (nullable).</td>
+</tr>
+<tr>
+<td>cout_total_invest</td>
+<td>Entier ou null</td>
+<td>Coût total de l&#39;investissement (nullable).</td>
+</tr>
+<tr>
+<td>nature_invest</td>
+<td>Tableau</td>
+<td>Nature de l&#39;investissement (ex: Plan d&#39;investissement sans détail).</td>
+</tr>
+<tr>
+<td>step_projet_invest</td>
+<td>Tableau</td>
+<td>Étapes du projet d&#39;investissement (ex: En cours).</td>
+</tr>
+</tbody></table>
+<h1 id='signals-schemas'>Signals Schemas</h1><h2 id='signal_a'>Signal_A</h2><h3 id='id'>id</h3>
+<ul>
+<li><strong>Type :</strong> integer($int64)</li>
+</ul>
+<h3 id='last_article_pubdate'>last_article_pubdate</h3>
+<ul>
+<li><strong>Type :</strong> string($date)</li>
+<li><strong>Pattern :</strong> ^\d{2}/\d{2}/\d{4}$</li>
+<li><strong>Exemple :</strong> 26/03/2021</li>
+<li><strong>Description :</strong> Date de publication du dernier article (dd/mm/YYYY)</li>
+</ul>
+<h3 id='creation_date'>creation_date</h3>
+<ul>
+<li><strong>Type :</strong> string($date)</li>
+<li><strong>Pattern :</strong> ^\d{2}/\d{2}/\d{4}$</li>
+<li><strong>Exemple :</strong> 26/03/2021</li>
+<li><strong>Description :</strong> Date de création du signal (dd/mm/YYYY)</li>
+</ul>
+<h3 id='last_update'>last_update</h3>
+<ul>
+<li><strong>Type :</strong> string($date)</li>
+<li><strong>Pattern :</strong> ^\d{2}/\d{2}/\d{4}$</li>
+<li><strong>Exemple :</strong> 26/03/2021</li>
+<li><strong>Description :</strong> Date de mise à jour du signal (dd/mm/YYYY)</li>
+</ul>
+<h3 id='follow_date'>follow_date</h3>
+<ul>
+<li><strong>Type :</strong> string($date)</li>
+<li><strong>Pattern :</strong> ^\d{2}/\d{2}/\d{4}$</li>
+<li><strong>Exemple :</strong> 26/03/2022</li>
+<li><strong>Description :</strong> Date de mise à jour du statut suivi du signal (dd/mm/YYYY)</li>
+</ul>
+<h3 id='type'>type *</h3>
+<ul>
+<li><strong>Type :</strong> string</li>
+</ul>
+<h3 id='label_type'>label_type</h3>
+<ul>
+<li><strong>Type :</strong> string</li>
+</ul>
+<h3 id='status'>status</h3>
+<ul>
+<li><strong>Type :</strong> string</li>
+<li><strong>Description :</strong> Order Status</li>
+<li><strong>Enum :</strong> 
+
+<ul>
+<li>Détecté</li>
+<li>Suivi</li>
+<li>Terminé</li>
+</ul></li>
+</ul>
+<h3 id='company_main'>company_main</h3>
+<ul>
+<li><strong>CompanyLight :</strong>
+
+<ul>
+<li><strong>id</strong>
+
+<ul>
+<li><strong>Type :</strong> integer</li>
+<li><strong>Exemple :</strong> 72242</li>
+</ul></li>
+<li><strong>siren</strong>
+
+<ul>
+<li><strong>Type :</strong> integer</li>
+<li><strong>MinLength :</strong> 9</li>
+<li><strong>MaxLength :</strong> 9</li>
+<li><strong>Pattern :</strong> ^\d{9}$</li>
+<li><strong>Exemple :</strong> 831946488</li>
+</ul></li>
+<li><strong>siret</strong>
+
+<ul>
+<li><strong>Type :</strong> integer</li>
+<li><strong>MinLength :</strong> 14</li>
+<li><strong>MaxLength :</strong> 14</li>
+<li><strong>Pattern :</strong> ^\d{14}$</li>
+<li><strong>Exemple :</strong> 83194648800010</li>
+</ul></li>
+<li><strong>social_name</strong>
+
+<ul>
+<li><strong>Type :</strong> string</li>
+<li><strong>Exemple :</strong> OPEN TOURISME LAB NIMES METROPOLE</li>
+</ul></li>
+<li><strong>siege</strong>
+
+<ul>
+<li><strong>Type :</strong> boolean</li>
+<li><strong>Exemple :</strong> true</li>
+</ul></li>
+<li><strong>links</strong>
+
+<ul>
+<li><strong>Type :</strong> array</li>
+<li><strong>rel</strong></li>
+<li><strong>Type :</strong> string</li>
+<li><strong>Exemple :</strong> self</li>
+<li><strong>Enum :</strong> [self, blank]</li>
+<li><strong>href</strong></li>
+<li><strong>Type :</strong> string</li>
+<li><strong>Exemple :</strong> https://api.decidento.com/companies/2438</li>
+</ul></li>
+<li><strong>sirets</strong>
+
+<ul>
+<li><strong>siret :</strong> string</li>
+<li><strong>example :</strong> 83194648800123</li>
+<li><strong>cp    :</strong> string</li>
+<li><strong>example :</strong> 75019</li>
+</ul></li>
+</ul></li>
+</ul>
 
       </div>
       <div class="dark-box">
