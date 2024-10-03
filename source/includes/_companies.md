@@ -622,9 +622,6 @@ _format                  | Chaîne de caractères     | Format de sortie (json o
 
 [//]: # (</aside>)
 
-
-
-
 ## Find company by its unique identifier CCCID
 
 > This query returns JSON structured like this:
@@ -862,9 +859,6 @@ _format         | Chaîne de caractères | Format de sortie
 [//]: # (Remember!)
 
 [//]: # (</aside>)
-
-
-
 
 ## Find a collection of companies by their SIREN
 

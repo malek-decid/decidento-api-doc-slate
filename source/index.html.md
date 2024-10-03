@@ -12,9 +12,11 @@ toc_footers:
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
+  - authentification
   - articles
   - companies
   - signals
+  - schemasignaux
 #  - errors
 
 search: true
@@ -26,17 +28,14 @@ meta:
     content: Documentation for the Decidento API
 ---
 
-# Decidento API documentation
+# Documentation Decidento API 
 
-Welcome to the DECIDENTO API ! You can use our API to access Decidento endpoints, which can get information on various Articles, Companies, and Signals in our database.
+Bienvenue sur l'API DECIDENTO ! Vous pouvez utiliser l'API pour accéder aux différents points (endpoints) de Decidento, qui permettent de récupérer des informations sur divers Articles, Entreprises, Signaux, et Contacts présents dans notre base de données.
 
-We have language bindings in Shell, PHP, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This API documentation page was created with <a href="https://api.decidento.com/" target="_blank" rel="noopener noreferrer">API Decidento</a>.
-
+Pour utiliser l'API Decidento, consultez la [section d'authentification](#authentification) et rendez-vous sur <a href="https://api.decidento.com/" target="_blank" rel="noopener noreferrer">API Decidento</a> pour tester.
 ## Path Table
 
-> Json response structure will be displayed in this section !
+> La structure de la réponse Json va être affiché dans cette section !
 
 <style>
   .method-get {
@@ -47,16 +46,16 @@ This API documentation page was created with <a href="https://api.decidento.com/
 
 | Method | Path                                                        | Description                             |
 | --- |-------------------------------------------------------------|:----------------------------------------|
-| <span class="method-get">GET</span> | [/articles](#get-all-articles)                              | Get last articles                       |
-| <span class="method-get">GET</span> | [/articles/search](#search-for-list-of-articles)            | Search for a list of articles           |
-| <span class="method-get">GET</span> | [/articles/search](#search-for-list-of-articles)                | Find article by ID                      |
-| <span class="method-get">GET</span> | [/articles/collection](#find-collection-of-articles-by-id)  | Find a collection of articles by IDS    |
-| <span class="method-get">GET</span> | [/companies](#get-all-companies)                            | Search companies with parameters        |
-| <span class="method-get">GET</span> | [/companies/{companyId}](#find-company-by-id)            | Find company by ID                      |
-| <span class="method-get">GET</span> | [/companies/collection](#find-list-of-companies-by-ids)            | Find a collection of companies by IDS   |
-| <span class="method-get">GET</span> | [/companies/v2](#find-list-of-companies)                            | Search companies with parameters        |
-| <span class="method-get">GET</span> | [/companies/{companyCccid}/v2](#find-company-by-its-unique-identifier-cccid) | Find company by CCCID                   |
-| <span class="method-get">GET</span> | [/companies/collection/v2](#find-a-collection-of-companies-by-their-siren)       | Find a collection of companies by SIREN |
-| <span class="method-get">GET</span> | [/signals](#getsignals)                                     | Get last signals                        |
-| <span class="method-get">GET</span> | [/signals/{signalId}](#getsignalssignalid)                  | Find signal by ID                       |
-| <span class="method-get">GET</span> | [/signals/collection](#getsignalscollection)                | Find collection of signals by IDS       |
+| <span class="method-get">GET</span> | [/articles](#get-all-articles)                              | Obtenir les derniers articles           |
+| <span class="method-get">GET</span> | [/articles/search](#search-for-list-of-articles)            | Rechercher une liste d'articles        |
+| <span class="method-get">GET</span> | [/articles/search](#search-for-list-of-articles)            | Trouver un article par ID              |
+| <span class="method-get">GET</span> | [/articles/collection](#find-collection-of-articles-by-id)  | Trouver une collection d'articles par IDS |
+| <span class="method-get">GET</span> | [/companies](#get-all-companies)                            | Rechercher des entreprises avec des paramètres |
+| <span class="method-get">GET</span> | [/companies/{companyId}](#find-company-by-id)              | Trouver une entreprise par ID          |
+| <span class="method-get">GET</span> | [/companies/collection](#find-list-of-companies-by-ids)    | Trouver une collection d'entreprises par IDS |
+| <span class="method-get">GET</span> | [/companies/v2](#find-list-of-companies)                   | Rechercher des entreprises avec des paramètres |
+| <span class="method-get">GET</span> | [/companies/{companyCccid}/v2](#find-company-by-its-unique-identifier-cccid) | Trouver une entreprise par CCCID       |
+| <span class="method-get">GET</span> | [/companies/collection/v2](#find-a-collection-of-companies-by-their-siren) | Trouver une collection d'entreprises par SIREN |
+| <span class="method-get">GET</span> | [/signals](#get-last-signals)                               | Obtenir les derniers signaux           |
+| <span class="method-get">GET</span> | [/signals/{signalId}](#get-a-signal-by-id)                 | Trouver un signal par ID               |
+| <span class="method-get">GET</span> | [/signals/collection](#get-a-list-of-signals-by-ids)       | Trouver une collection de signaux par IDS |

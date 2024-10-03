@@ -267,19 +267,28 @@ This endpoint retrieves a list of articles according to the query parameters sho
 
 ### Query Parameters
 
-Field         | Type             | Description                                                                        
---------------|------------------|-------------------------------------------------------------------------------------
-term          | string (query)    | Search term (keywords, siren, social name, ...)                                     
-siren         | integer ($int9)   | Siren of main companies related to article / signals (format: ^([0-9]{9}))          
-date_begin    | string (query)    | Begin date published (ex: 2019-03-03)                                               
-date_end      | string (query)    | End date published (ex: 2019-03-03)                                                 
-limit         | integer (query)   | The maximum records to return. If the value exceeds the maximum (200), the maximum value will be used. Default value: 100
-offset        | integer (query)   | Start number for returned articles. Useful for paginate results. Default value: 1    
-order         | string (query)    | Order Field. Available values: publishedAt. Default value: publishedAt              
-sort          | string (query)    | Sorting direction. Available values: desc, asc. Default value: desc                 
-meta          | boolean (query)   | Output paginate info meta. Default value: false                                     
-_format       | string (query)    | Output format. Available values: json, xml. Default value: json                     
-X-API-VERSION | string (header)   | X-API-VERSION
+Champ         | Type                    | Description                                                                        
+--------------|------------------------|-----------------------------------------------------------------------------------
+term          | chaîne de caractères    | Terme de recherche (mots-clés, siren, nom social, ...)                                     
+siren         | entier                  | Siren des entreprises principales liées à l'article / aux signaux (format : ^([0-9]{9}))          
+date_begin    | chaîne de caractères    | Date de début de publication (ex: 2019-03-03)                                               
+date_end      | chaîne de caractères    | Date de fin de publication (ex: 2019-03-03)                                                 
+limit         | entier                  | Nombre maximal d'enregistrements à retourner. Si la valeur dépasse le maximum (200), le maximum sera utilisé.  
+|                        | Valeur par défaut : 100
+offset        | entier                  | Numéro de départ pour les articles retournés. Utile pour paginer les résultats.  
+|                        | Valeur par défaut : 1    
+order         | chaîne de caractères    | Champ de tri.  
+|                        | Valeur par défaut : publishedAt              
+sort          | chaîne de caractères    | Sens du tri.  
+|                        | Valeurs disponibles : desc, asc.  
+|                        | Valeur par défaut : desc                  
+meta          | booléen                | Afficher les informations de pagination.  
+|                        | Valeur par défaut : false                                     
+_format       | chaîne de caractères    | Format de sortie.  
+|                        | Valeurs disponibles : json, xml.  
+|                        | Valeur par défaut : json                     
+X-API-VERSION | chaîne de caractères    | Version de l'API (X-API-VERSION)
+
 
 ### Reponse
 <style>
@@ -518,7 +527,7 @@ ID | L'ID de l'article
 
 > This query returns JSON structured like : [this](#get-all-articles)
 
-This endpoint retrieves a list of articles by IDs.
+This endpoint retrieves a list of articles by an array of IDs.
 
 ### HTTP Request
 <style>

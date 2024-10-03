@@ -13,169 +13,62 @@ Consultez ce lien pour tester : <a href="https://api.decidento.com/documentation
 > This query returns JSON structured like this:
 
 ```json
-{
-  "id": 0,
-  "last_article_pubdate": "26/03/2021",
-  "creation_date": "26/03/2021",
-  "last_update": "26/03/2021",
-  "follow_date": "26/03/2022",
-  "type": "string",
-  "label_type": "string",
-  "status": "Détecté",
-  "company_main": [
-    {
-      "id": 72242,
-      "siren": 831946488,
-      "siret": 83194648800010,
-      "siege": true,
-      "social_name": "OPEN TOURISME LAB NIMES METROPOLE",
-      "sirets": [
-        {
-          "siret": 83194648800123,
-          "type": 75008
-        },
-        {
-          "siret": 83194648800128,
-          "type": 75019
-        }
-      ],
-      "links": [
-        {
-          "rel": "self",
-          "href": "https://api.decidento.com/companies/2438"
-        },
-        {
-          "rel": "self",
-          "href": "https://api.decidento.com/companies/24384"
-        }
-      ]
-    }
-  ],
-  "company_alt": [
-    {
-      "id": 72242,
-      "siren": 831946488,
-      "siret": 83194648800010,
-      "siege": true,
-      "social_name": "OPEN TOURISME LAB NIMES METROPOLE",
-      "sirets": [
-        {
-          "siret": 83194648800123,
-          "type": 75008
-        },
-        {
-          "siret": 83194648800128,
-          "type": 75019
-        }
-      ],
-      "links": [
-        {
-          "rel": "self",
-          "href": "https://api.decidento.com/companies/2438"
-        },
-        {
-          "rel": "self",
-          "href": "https://api.decidento.com/companies/24384"
-        }
-      ]
-    }
-  ],
-  "continents": [
-    "string"
-  ],
-  "countries": [
-    "string"
-  ],
-  "departments": [
-    {
-      "code": 92,
-      "dep": "Hauts de Seine",
-      "region": "Île-de-France"
-    }
-  ],
-  "city": [
-    {
-      "label": "Parcoul-Chenaud",
-      "zip_code": "24410",
-      "insee_code": "24316",
-      "departement_code": "24"
-    }
-  ],
-  "city_label": "string",
-  "city_zip_code": "string",
-  "surface_totale_facilities": 0,
-  "surface_terrain": 0,
-  "surface_bati": 0,
-  "date_start_facilities": "2024-10-02T14:30:44.398Z",
-  "date_end_facilities_building": "2024-10-02T14:30:44.398Z",
-  "cout_total_facilities_ground": 0,
-  "cout_total_facilities_construction": 0,
-  "cout_total_facilities": 0,
-  "maitre_ouvrage": {
-    "id": 72242,
-    "siren": 831946488,
-    "siret": 83194648800010,
-    "siege": true,
-    "social_name": "OPEN TOURISME LAB NIMES METROPOLE",
-    "sirets": [
+[
+  {
+    "id": 1118256,
+    "type": [
       {
-        "siret": 83194648800123,
-        "type": 75008
-      },
-      {
-        "siret": 83194648800128,
-        "type": 75019
+        "id": 2,
+        "code": "B",
+        "label": "Construction"
       }
     ],
+    "status": "Détecté",
     "links": [
       {
         "rel": "self",
-        "href": "https://api.decidento.com/companies/2438"
-      },
-      {
-        "rel": "self",
-        "href": "https://api.decidento.com/companies/24384"
-      }
-    ]
-  },
-  "maitre_oeuvre": {
-    "id": 72242,
-    "siren": 831946488,
-    "siret": 83194648800010,
-    "siege": true,
-    "social_name": "OPEN TOURISME LAB NIMES METROPOLE",
-    "sirets": [
-      {
-        "siret": 83194648800123,
-        "type": 75008
-      },
-      {
-        "siret": 83194648800128,
-        "type": 75019
+        "href": "https://api.decidento.com/signals/1118256"
       }
     ],
+    "departments_list": [
+      {
+        "code": "26",
+        "dep": "Drôme",
+        "region": "Auvergne-Rhône-Alpes"
+      }
+    ],
+    "last_article_pubdate": "21/01/2023",
+    "creation_date": "21/01/2023",
+    "last_update": "03/10/2024"
+  },
+  {
+    "id": 1118259,
+    "type": [
+      {
+        "id": 1,
+        "code": "A",
+        "label": "Aménagement & urbanisme"
+      }
+    ],
+    "status": "Détecté",
     "links": [
       {
         "rel": "self",
-        "href": "https://api.decidento.com/companies/2438"
-      },
-      {
-        "rel": "self",
-        "href": "https://api.decidento.com/companies/24384"
+        "href": "https://api.decidento.com/signals/1118259"
       }
-    ]
-  },
-  "type_projet_facilities": [
-    "string"
-  ],
-  "step_projet_facilities": [
-    "string"
-  ],
-  "building_permit": {
-    "permit_number": "08611322A0002",
-    "type": "permis_amenager"
+    ],
+    "departments_list": [
+      {
+        "code": "22",
+        "dep": "Côtes d'Armor",
+        "region": "Bretagne"
+      }
+    ],
+    "last_article_pubdate": "29/09/2024",
+    "creation_date": "29/09/2024",
+    "last_update": "03/10/2024"
   }
-}
+]
 ```
 
 This endpoint retrieves a list of signals according to the query parameters shown below.
@@ -206,101 +99,278 @@ meta        | Booléen  | Informations paginées en sortie                      
 _format     | Chaîne   | Format de sortie                                                         | json
 |          | Valeurs disponibles : json, xml                                          |
 
-### Response
+### Response (2 signals)
 
-| Nom                                   | Type                | Description                                                                                     |
-|---------------------------------------|---------------------|-------------------------------------------------------------------------------------------------|
-| id                                    | Entier              | Identifiant du projet                                                                          |
-| last_article_pubdate                  | Chaîne (date)       | Date de publication du dernier article                                                          |
-| creation_date                         | Chaîne (date)       | Date de création du projet                                                                      |
-| last_update                           | Chaîne (date)       | Date de la dernière mise à jour du projet                                                      |
-| follow_date                           | Chaîne (date)       | Date de suivi du projet                                                                          |
-| type                                  | Chaîne              | Type du projet                                                                                 |
-| label_type                            | Chaîne              | Libellé du type de projet                                                                        |
-| status                                | Chaîne              | Statut du projet (ex: "Détecté")                                                               |
-| **company_main**                      | Objet               | Informations sur la société principale                                                          |
-| &nbsp;&nbsp;&nbsp;company_main.id     | Entier              | Identifiant de la société principale                                                             |
-| &nbsp;&nbsp;&nbsp;company_main.siren  | Entier              | SIREN de la société principale                                                                   |
-| &nbsp;&nbsp;&nbsp;company_main.siret  | Entier              | SIRET de la société principale                                                                   |
-| &nbsp;&nbsp;&nbsp;company_main.siege  | Booléen             | Indique si l'établissement est le siège social                                                  |
-| &nbsp;&nbsp;&nbsp;company_main.social_name | Chaîne           | Nom de la société principale                                                                     |
-| &nbsp;&nbsp;&nbsp;company_main.sirets | Tableau d'objet     | Liste des SIRET secondaires                                                                      |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;company_main.sirets.siret | Entier  | Numéro SIRET secondaire                                                                         |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;company_main.sirets.type  | Entier | Type de SIRET                                                                                  |
-| &nbsp;&nbsp;&nbsp;company_main.links   | Tableau d'objet     | Liens associés à la société principale                                                           |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;company_main.links.rel     | Chaîne              | Type de lien (ex: "self")                                                                       |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;company_main.links.href    | Chaîne              | URL du lien                                                                                     |
-| **company_alt**                       | Objet               | Informations sur les sociétés alternatives (similaire à company_main)                          |
-| &nbsp;&nbsp;&nbsp;company_alt.id      | Entier              | Identifiant de la société alternative                                                            |
-| &nbsp;&nbsp;&nbsp;company_alt.siren   | Entier              | SIREN de la société alternative                                                                  |
-| &nbsp;&nbsp;&nbsp;company_alt.siret   | Entier              | SIRET de la société alternative                                                                  |
-| &nbsp;&nbsp;&nbsp;company_alt.siege   | Booléen             | Indique si l'établissement est le siège social                                                  |
-| &nbsp;&nbsp;&nbsp;company_alt.social_name | Chaîne           | Nom de la société alternative                                                                    |
-| &nbsp;&nbsp;&nbsp;company_alt.sirets  | Tableau d'objet     | Liste des SIRET secondaires de la société alternative                                            |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;company_alt.sirets.siret   | Entier              | Numéro SIRET secondaire                                                                          |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;company_alt.sirets.type    | Entier              | Type de SIRET                                                                                   |
-| &nbsp;&nbsp;&nbsp;company_alt.links    | Tableau d'objet     | Liens associés à la société alternative                                                           |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;company_alt.links.rel       | Chaîne              | Type de lien (ex: "self")                                                                       |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;company_alt.links.href      | Chaîne              | URL du lien                                                                                     |
-| continents                             | Tableau de chaînes  | Continents associés au projet                                                                    |
-| countries                              | Tableau de chaînes  | Pays associés au projet                                                                          |
-| **departments**                       | Objet               | Départements associés au projet                                                                  |
-| &nbsp;&nbsp;&nbsp;departments.code     | Entier              | Code du département                                                                              |
-| &nbsp;&nbsp;&nbsp;departments.dep      | Chaîne              | Nom du département                                                                                |
-| &nbsp;&nbsp;&nbsp;departments.region   | Chaîne              | Nom de la région                                                                                 |
-| **city**                               | Objet               | Ville associée au projet                                                                         |
-| &nbsp;&nbsp;&nbsp;city.label           | Chaîne              | Nom de la ville                                                                                 |
-| &nbsp;&nbsp;&nbsp;city.zip_code        | Chaîne              | Code postal de la ville                                                                          |
-| &nbsp;&nbsp;&nbsp;city.insee_code      | Chaîne              | Code INSEE de la ville                                                                            |
-| &nbsp;&nbsp;&nbsp;city.departement_code | Chaîne              | Code du département                                                                               |
-| city_label                             | Chaîne              | Libellé de la ville                                                                               |
-| city_zip_code                          | Chaîne              | Code postal de la ville                                                                          |
-| surface_totale_facilities              | Entier              | Surface totale des installations                                                                  |
-| surface_terrain                        | Entier              | Surface du terrain                                                                                |
-| surface_bati                           | Entier              | Surface bâtie                                                                                   |
-| date_start_facilities                  | Chaîne (date)       | Date de début des installations                                                                   |
-| date_end_facilities_building           | Chaîne (date)       | Date de fin de construction                                                                       |
-| cout_total_facilities_ground           | Entier              | Coût total des installations au sol                                                               |
-| cout_total_facilities_construction     | Entier              | Coût total des constructions                                                                       |
-| cout_total_facilities                  | Entier              | Coût total des installations                                                                      |
-| **maitre_ouvrage**                     | Objet               | Informations sur le maître d'ouvrage (similaire à company_main)                                 |
-| &nbsp;&nbsp;&nbsp;maitre_ouvrage.id    | Entier              | Identifiant du maître d'ouvrage                                                                   |
-| &nbsp;&nbsp;&nbsp;maitre_ouvrage.siren | Entier              | SIREN du maître d'ouvrage                                                                        |
-| &nbsp;&nbsp;&nbsp;maitre_ouvrage.siret | Entier              | SIRET du maître d'ouvrage                                                                        |
-| &nbsp;&nbsp;&nbsp;maitre_ouvrage.siege | Booléen             | Indique si l'établissement est le siège social                                                   |
-| &nbsp;&nbsp;&nbsp;maitre_ouvrage.social_name | Chaîne         | Nom du maître d'ouvrage                                                                          |
-| &nbsp;&nbsp;&nbsp;maitre_ouvrage.sirets | Tableau d'objet     | Liste des SIRET du maître d'ouvrage                                                               |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maitre_ouvrage.sirets.siret | Entier | Numéro SIRET                                                                                   |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maitre_ouvrage.sirets.type  | Entier | Type de SIRET                                                                                   |
-| &nbsp;&nbsp;&nbsp;maitre_ouvrage.links | Tableau d'objet     | Liens associés au maître d'ouvrage                                                               |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maitre_ouvrage.links.rel     | Chaîne              | Type de lien (ex: "self")                                                                       |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maitre_ouvrage.links.href    | Chaîne              | URL du lien                                                                                     |
-| **maitre_oeuvre**                      | Objet               | Informations sur le maître d'œuvre (similaire à company_main)                                   |
-| &nbsp;&nbsp;&nbsp;maitre_oeuvre.id      | Entier              | Identifiant du maître d'œuvre                                                                     |
-| &nbsp;&nbsp;&nbsp;maitre_oeuvre.siren   | Entier              | SIREN du maître d'œuvre                                                                          |
-| &nbsp;&nbsp;&nbsp;maitre_oeuvre.siret   | Entier              | SIRET du maître d'œuvre                                                                          |
-| &nbsp;&nbsp;&nbsp;maitre_oeuvre.siege   | Booléen             | Indique si l'établissement est le siège social                                                   |
-| &nbsp;&nbsp;&nbsp;maitre_oeuvre.social_name | Chaîne         | Nom du maître d'œuvre                                                                            |
-| &nbsp;&nbsp;&nbsp;maitre_oeuvre.sirets   | Tableau d'objet     | Liste des SIRET du maître d'œuvre                                                                 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maitre_oeuvre.sirets.siret     | Entier              | Numéro SIRET                                                                                   |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maitre_oeuvre.sirets.type      | Entier              | Type de SIRET                                                                                   |
-| &nbsp;&nbsp;&nbsp;maitre_oeuvre.links    | Tableau d'objet     | Liens associés au maître d'œuvre                                                                  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maitre_oeuvre.links.rel         | Chaîne              | Type de lien (ex: "self")                                                                       |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maitre_oeuvre.links.href        | Chaîne              | URL du lien                                                                                     |
-| type_projet_facilities                 | Tableau de chaînes  | Type de projet d'installation                                                                    |
-| step_projet_facilities                 | Tableau de chaînes  | Étape du projet d'installation                                                                    |
-| **building_permit**                    | Objet               | Informations sur le permis de construire                                                         |
-| &nbsp;&nbsp;&nbsp;building_permit.permit_number | Chaîne         | Numéro du permis de construire                                                                    |
-| &nbsp;&nbsp;&nbsp;building_permit.type   | Chaîne              | Type de permis (ex: "permis_amenager")                                                          |
+| Champ                                   | Type                        | Description                                                                                      |
+|-----------------------------------------|-----------------------------|--------------------------------------------------------------------------------------------------|
+| id                                      | Entier                      | Identifiant unique du signal.                                                                    |
+| type                                    | Tableau                     | Type d'activité associée au signal.                                                              |
+| &nbsp;&nbsp;&nbsp;&nbsp;- id            | Entier                      | Identifiant du type (ex: 2).                                                                     |
+| &nbsp;&nbsp;&nbsp;&nbsp;- code          | Chaîne de caractères        | Code du type (ex: B).                                                                             |
+| &nbsp;&nbsp;&nbsp;&nbsp;- label         | Chaîne de caractères        | Libellé du type (ex: Construction).                                                               |
+| status                                  | Chaîne de caractères        | Statut du signal (ex: Détecté).                                                                  |
+| links                                   | Tableau                     | Liens associés au signal.                                                                          |
+| &nbsp;&nbsp;&nbsp;&nbsp;- rel           | Chaîne de caractères        | Relation du lien (ex: self).                                                                      |
+| &nbsp;&nbsp;&nbsp;&nbsp;- href          | Chaîne de caractères        | URL du lien (ex: https://api.decidento.com/signals/1118256).                                    |
+| departments_list                        | Tableau                     | Liste des départements associés au signal.                                                       |
+| &nbsp;&nbsp;&nbsp;&nbsp;- code          | Chaîne de caractères        | Code du département (ex: 26).                                                                     |
+| &nbsp;&nbsp;&nbsp;&nbsp;- dep           | Chaîne de caractères        | Nom du département (ex: Drôme).                                                                   |
+| &nbsp;&nbsp;&nbsp;&nbsp;- region        | Chaîne de caractères        | Région associée (ex: Auvergne-Rhône-Alpes).                                                     |
+| last_article_pubdate                   | Date                        | Date de publication du dernier article lié au signal (ex: 21/01/2023).                          |
+| creation_date                          | Date                        | Date de création du signal (ex: 21/01/2023).                                                    |
+| last_update                            | Date                        | Date de la dernière mise à jour du signal (ex: 03/10/2024).                                     |
 
 
-
-## Get a signal
+## Get a signal by ID
 
 > This query returns JSON structured like this :
 
 ```json
-
+{
+  "id": 1000000,
+  "departments_list": [
+    {
+      "code": "64",
+      "dep": "Pyrénées Atlantiques",
+      "region": "Nouvelle Aquitaine"
+    }
+  ],
+  "last_article_pubdate": "04/04/2024",
+  "creation_date": "03/04/2024",
+  "last_update": "03/04/2024",
+  "articles": [
+    {
+      "id": 756220,
+      "title": "Interruption de la production à Mont pour Vertex Bioenergie",
+      "pub_date": "04/04/2024",
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://api.decidento.com/articles/756220"
+        },
+        {
+          "rel": "extranet",
+          "href": "https://platform.decidento.com/extranet/article/756220"
+        }
+      ]
+    }
+  ],
+  "follow_date": null,
+  "type": "K1",
+  "label_type": "Investissements",
+  "status": "Détecté",
+  "company_main": {
+    "id": 24531,
+    "siren": "481741841",
+    "siret": "48174184100037",
+    "cccid": "FR_481741841",
+    "social_name": "BIOENERGIE DU SUD-OUEST",
+    "siege": true,
+    "type": "main",
+    "sirets": [],
+    "links": [
+      {
+        "rel": "self",
+        "href": "https://api.decidento.com/companies/24531"
+      },
+      {
+        "rel": "self-v2",
+        "href": "https://api.decidento.com/companies/FR_481741841/v2"
+      },
+      {
+        "rel": "extranet",
+        "href": "https://platform.decidento.com/extranet/company/infoplus/24531"
+      },
+      {
+        "rel": "extranet-v2",
+        "href": "https://platform.decidento.com/extranet/company/infoplusV2/FR_481741841"
+      }
+    ],
+    "self_link": "https://api.decidento.com/companies/24531",
+    "self_v2_link": "https://api.decidento.com/companies/FR_481741841/v2",
+    "extranet_link": "https://platform.decidento.com/extranet/company/infoplus/24531",
+    "extranet_v2_link": "https://platform.decidento.com/extranet/company/infoplusV2/FR_481741841"
+  },
+  "companies": [
+    {
+      "id": 24531,
+      "siren": "481741841",
+      "siret": "48174184100037",
+      "cccid": "FR_481741841",
+      "social_name": "BIOENERGIE DU SUD-OUEST",
+      "siege": true,
+      "type": "main",
+      "sirets": [],
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://api.decidento.com/companies/24531"
+        },
+        {
+          "rel": "self-v2",
+          "href": "https://api.decidento.com/companies/FR_481741841/v2"
+        },
+        {
+          "rel": "extranet",
+          "href": "https://platform.decidento.com/extranet/company/infoplus/24531"
+        },
+        {
+          "rel": "extranet-v2",
+          "href": "https://platform.decidento.com/extranet/company/infoplusV2/FR_481741841"
+        }
+      ],
+      "self_link": "https://api.decidento.com/companies/24531",
+      "self_v2_link": "https://api.decidento.com/companies/FR_481741841/v2",
+      "extranet_link": "https://platform.decidento.com/extranet/company/infoplus/24531",
+      "extranet_v2_link": "https://platform.decidento.com/extranet/company/infoplusV2/FR_481741841"
+    }
+  ],
+  "continents": [],
+  "countries": [],
+  "departments": [
+    "Pyrénées Atlantiques"
+  ],
+  "city_label": "",
+  "city_zip_code": "",
+  "summary": "Nature: Plan d'investissement sans détail | Stade: En cours | Localisation du signal: Pyrénées Atlantiques",
+  "step": "En cours",
+  "last_article_link": "https://platform.decidento.com/extranet/article/756220",
+  "sectors": null,
+  "date_start_invest": null,
+  "date_end_invest": null,
+  "cout_total_invest": null,
+  "nature_invest": [
+    "Plan d'investissement sans détail"
+  ],
+  "step_projet_invest": [
+    "En cours"
+  ]
+}
 ```
 
 This endpoint retrieves a signal according to ID.
+
+### HTTP Request
+<style>
+  .method-get {
+    color: green;
+    font-weight: bold;
+  }
+</style>
+<span class="method-get">GET </span>
+`
+ https://api.decidento.com/signals/{signalId}
+`
+
+### Query Parameters
+
+Champ       | Type                        | Description                                                              
+------------|-----------------------------|--------------------------------------------------------------------------
+signalId *        | entier                      | l'id du signal                                                     
+
+### Response
+
+| Champ                                   | Type                        | Description                                                                                      |
+|-----------------------------------------|-----------------------------|--------------------------------------------------------------------------------------------------|
+| id                                      | Entier                      | Identifiant unique de l'investissement.                                                          |
+| departments_list                        | Tableau                     | Liste des départements associés à l'investissement (ex: Pyrénées Atlantiques).                  |
+| last_article_pubdate                   | Date                        | Date de publication du dernier article lié à l'investissement (ex: 04/04/2024).                  |
+| creation_date                          | Date                        | Date de création de l'enregistrement de l'investissement (ex: 03/04/2024).                       |
+| last_update                            | Date                        | Date de la dernière mise à jour de l'enregistrement (ex: 03/04/2024).                            |
+| articles                                | Tableau                     | Liste des articles liés à l'investissement.                                                      |
+| &nbsp;&nbsp;&nbsp;&nbsp;- id           | Entier                      | Identifiant de l'article (ex: 756220).                                                           |
+| &nbsp;&nbsp;&nbsp;&nbsp;- title        | Chaîne de caractères        | Titre de l'article (ex: Interruption de la production à Mont pour Vertex Bioenergie).            |
+| &nbsp;&nbsp;&nbsp;&nbsp;- pub_date     | Date                        | Date de publication de l'article (ex: 04/04/2024).                                             |
+| &nbsp;&nbsp;&nbsp;&nbsp;- links        | Tableau                     | Liens associés à l'article (ex: self, extranet).                                               |
+| follow_date                            | Date ou null                | Date de suivi de l'investissement, s'il y en a (nullable).                                       |
+| type                                   | Chaîne de caractères        | Type d'investissement (ex: K1).                                                                   |
+| label_type                             | Chaîne de caractères        | Type d'étiquette de l'investissement (ex: Investissements).                                      |
+| status                                 | Chaîne de caractères        | Statut de l'investissement (ex: Détecté).                                                        |
+| company_main                           | Objet                       | Informations sur l'entreprise principale associée à l'investissement.                            |
+| &nbsp;&nbsp;&nbsp;&nbsp;- id           | Entier                      | Identifiant de l'entreprise (ex: 24531).                                                         |
+| &nbsp;&nbsp;&nbsp;&nbsp;- siren        | Chaîne de caractères        | Code SIREN de l'entreprise (ex: 481741841).                                                    |
+| &nbsp;&nbsp;&nbsp;&nbsp;- siret        | Chaîne de caractères        | Code SIRET de l'entreprise (ex: 48174184100037).                                               |
+| &nbsp;&nbsp;&nbsp;&nbsp;- cccid        | Chaîne de caractères        | Code CCCID de l'entreprise (ex: FR_481741841).                                                 |
+| &nbsp;&nbsp;&nbsp;&nbsp;- social_name  | Chaîne de caractères        | Raison sociale de l'entreprise (ex: BIOENERGIE DU SUD-OUEST).                                 |
+| &nbsp;&nbsp;&nbsp;&nbsp;- siege        | Booléen                     | Indique si c'est le siège de l'entreprise (true/false).                                        |
+| &nbsp;&nbsp;&nbsp;&nbsp;- type         | Chaîne de caractères        | Type d'entreprise (ex: main).                                                                     |
+| &nbsp;&nbsp;&nbsp;&nbsp;- links        | Tableau                     | Liens relatifs à l'entreprise (ex: self, extranet).                                             |
+| departments                            | Tableau                     | Liste des départements associés (ex: Pyrénées Atlantiques).                                     |
+| city_label                             | Chaîne de caractères        | Libellé de la ville (nullable).                                                                   |
+| city_zip_code                          | Chaîne de caractères        | Code postal de la ville (nullable).                                                               |
+| summary                                | Chaîne de caractères        | Résumé de l'investissement (ex: Nature: Plan d'investissement sans détail | Stade: En cours).     |
+| step                                   | Chaîne de caractères        | Étape actuelle de l'investissement (ex: En cours).                                              |
+| last_article_link                      | Chaîne de caractères        | Lien vers le dernier article publié (ex: https://platform.decidento.com/extranet/article/756220). |
+| sectors                                | Tableau ou null             | Secteurs d'activité liés à l'investissement (nullable).                                           |
+| date_start_invest                      | Date ou null                | Date de début de l'investissement (nullable).                                                    |
+| date_end_invest                        | Date ou null                | Date de fin de l'investissement (nullable).                                                      |
+| cout_total_invest                      | Entier ou null              | Coût total de l'investissement (nullable).                                                       |
+| nature_invest                          | Tableau                     | Nature de l'investissement (ex: Plan d'investissement sans détail).                             |
+| step_projet_invest                     | Tableau                     | Étapes du projet d'investissement (ex: En cours).                                              |
+
+
+
+## Get a list of signals by IDs
+
+> This query returns JSON structured like this :
+
+This endpoint retrieves a list of signals according to an array of IDs.
+
+### HTTP Request
+<style>
+  .method-get {
+    color: green;
+    font-weight: bold;
+  }
+</style>
+<span class="method-get">GET </span>
+`
+ https://api.decidento.com/signals/collection/
+`
+
+### Query Parameters
+
+Champ       | Type                        | Description                                                              
+------------|-----------------------------|--------------------------------------------------------------------------
+listIds  *        | entier                      | les IDs des signaux                                                     
+
+### Response
+
+| Champ                                   | Type                        | Description                                                                                      |
+|-----------------------------------------|-----------------------------|--------------------------------------------------------------------------------------------------|
+| id                                      | Entier                      | Identifiant unique de l'investissement.                                                          |
+| departments_list                        | Tableau                     | Liste des départements associés à l'investissement (ex: Pyrénées Atlantiques).                  |
+| last_article_pubdate                   | Date                        | Date de publication du dernier article lié à l'investissement (ex: 04/04/2024).                  |
+| creation_date                          | Date                        | Date de création de l'enregistrement de l'investissement (ex: 03/04/2024).                       |
+| last_update                            | Date                        | Date de la dernière mise à jour de l'enregistrement (ex: 03/04/2024).                            |
+| articles                                | Tableau                     | Liste des articles liés à l'investissement.                                                      |
+| &nbsp;&nbsp;&nbsp;&nbsp;- id           | Entier                      | Identifiant de l'article (ex: 756220).                                                           |
+| &nbsp;&nbsp;&nbsp;&nbsp;- title        | Chaîne de caractères        | Titre de l'article (ex: Interruption de la production à Mont pour Vertex Bioenergie).            |
+| &nbsp;&nbsp;&nbsp;&nbsp;- pub_date     | Date                        | Date de publication de l'article (ex: 04/04/2024).                                             |
+| &nbsp;&nbsp;&nbsp;&nbsp;- links        | Tableau                     | Liens associés à l'article (ex: self, extranet).                                               |
+| follow_date                            | Date ou null                | Date de suivi de l'investissement, s'il y en a (nullable).                                       |
+| type                                   | Chaîne de caractères        | Type d'investissement (ex: K1).                                                                   |
+| label_type                             | Chaîne de caractères        | Type d'étiquette de l'investissement (ex: Investissements).                                      |
+| status                                 | Chaîne de caractères        | Statut de l'investissement (ex: Détecté).                                                        |
+| company_main                           | Objet                       | Informations sur l'entreprise principale associée à l'investissement.                            |
+| &nbsp;&nbsp;&nbsp;&nbsp;- id           | Entier                      | Identifiant de l'entreprise (ex: 24531).                                                         |
+| &nbsp;&nbsp;&nbsp;&nbsp;- siren        | Chaîne de caractères        | Code SIREN de l'entreprise (ex: 481741841).                                                    |
+| &nbsp;&nbsp;&nbsp;&nbsp;- siret        | Chaîne de caractères        | Code SIRET de l'entreprise (ex: 48174184100037).                                               |
+| &nbsp;&nbsp;&nbsp;&nbsp;- cccid        | Chaîne de caractères        | Code CCCID de l'entreprise (ex: FR_481741841).                                                 |
+| &nbsp;&nbsp;&nbsp;&nbsp;- social_name  | Chaîne de caractères        | Raison sociale de l'entreprise (ex: BIOENERGIE DU SUD-OUEST).                                 |
+| &nbsp;&nbsp;&nbsp;&nbsp;- siege        | Booléen                     | Indique si c'est le siège de l'entreprise (true/false).                                        |
+| &nbsp;&nbsp;&nbsp;&nbsp;- type         | Chaîne de caractères        | Type d'entreprise (ex: main).                                                                     |
+| &nbsp;&nbsp;&nbsp;&nbsp;- links        | Tableau                     | Liens relatifs à l'entreprise (ex: self, extranet).                                             |
+| departments                            | Tableau                     | Liste des départements associés (ex: Pyrénées Atlantiques).                                     |
+| city_label                             | Chaîne de caractères        | Libellé de la ville (nullable).                                                                   |
+| city_zip_code                          | Chaîne de caractères        | Code postal de la ville (nullable).                                                               |
+| summary                                | Chaîne de caractères        | Résumé de l'investissement (ex: Nature: Plan d'investissement sans détail | Stade: En cours).     |
+| step                                   | Chaîne de caractères        | Étape actuelle de l'investissement (ex: En cours).                                              |
+| last_article_link                      | Chaîne de caractères        | Lien vers le dernier article publié (ex: https://platform.decidento.com/extranet/article/756220). |
+| sectors                                | Tableau ou null             | Secteurs d'activité liés à l'investissement (nullable).                                           |
+| date_start_invest                      | Date ou null                | Date de début de l'investissement (nullable).                                                    |
+| date_end_invest                        | Date ou null                | Date de fin de l'investissement (nullable).                                                      |
+| cout_total_invest                      | Entier ou null              | Coût total de l'investissement (nullable).                                                       |
+| nature_invest                          | Tableau                     | Nature de l'investissement (ex: Plan d'investissement sans détail).                             |
+| step_projet_invest                     | Tableau                     | Étapes du projet d'investissement (ex: En cours).                                              |
+
