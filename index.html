@@ -295,7 +295,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -304,12 +304,6 @@
     </a>
     <div class="toc-wrapper">
       <img src="images/LOGO-NOUVELLE-BASELINE-1-e1641824758670-78cdbde1.png" class="logo" alt="" />
-        <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
-        </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -327,7 +321,7 @@
             <a href="#articles" class="toc-h1 toc-link" data-title="Articles">Articles</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-articles" class="toc-h2 toc-link" data-title="Get All Articles">Get All Articles</a>
+                    <a href="#get-last-articles" class="toc-h2 toc-link" data-title="Get last Articles">Get last Articles</a>
                   </li>
                   <li>
                     <a href="#search-for-list-of-articles" class="toc-h2 toc-link" data-title="Search for list of articles">Search for list of articles</a>
@@ -355,6 +349,23 @@
                   <li>
                     <a href="#find-list-of-companies" class="toc-h2 toc-link" data-title="Find list of companies">Find list of companies</a>
                   </li>
+                  <li>
+                    <a href="#find-company-by-its-unique-identifier-cccid" class="toc-h2 toc-link" data-title="Find company by its unique identifier CCCID">Find company by its unique identifier CCCID</a>
+                  </li>
+                  <li>
+                    <a href="#find-a-collection-of-companies-by-their-siren" class="toc-h2 toc-link" data-title="Find a collection of companies by their SIREN">Find a collection of companies by their SIREN</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#signals" class="toc-h1 toc-link" data-title="Signals">Signals</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-last-signals" class="toc-h2 toc-link" data-title="Get last signals">Get last signals</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-signal" class="toc-h2 toc-link" data-title="Get a signal">Get a signal</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -371,8 +382,12 @@
 
 <p>We have language bindings in Shell, PHP, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
 
-<p>This API documentation page was created with <a href="https://api.decidento.com/" target="_blank" rel="noopener noreferrer">Decidento</a>.</p>
+<p>This API documentation page was created with <a href="https://api.decidento.com/" target="_blank" rel="noopener noreferrer">API Decidento</a>.</p>
 <h2 id='path-table'>Path Table</h2>
+<blockquote>
+<p>Json response structure will be displayed in this section !</p>
+</blockquote>
+
 <style>
   .method-get {
     color: green;
@@ -399,7 +414,7 @@
 </tr>
 <tr>
 <td><span class="method-get">GET</span></td>
-<td><a href="#find-article-by-id">/articles/{articleId}</a></td>
+<td><a href="#search-for-list-of-articles">/articles/search</a></td>
 <td style="text-align: left">Find article by ID</td>
 </tr>
 <tr>
@@ -429,12 +444,12 @@
 </tr>
 <tr>
 <td><span class="method-get">GET</span></td>
-<td><a href="#getcompaniescompanycccidv2">/companies/{companyCccid}/v2</a></td>
+<td><a href="#find-company-by-its-unique-identifier-cccid">/companies/{companyCccid}/v2</a></td>
 <td style="text-align: left">Find company by CCCID</td>
 </tr>
 <tr>
 <td><span class="method-get">GET</span></td>
-<td><a href="#getcompaniescollectionv2">/companies/collection/v2</a></td>
+<td><a href="#find-a-collection-of-companies-by-their-siren">/companies/collection/v2</a></td>
 <td style="text-align: left">Find a collection of companies by SIREN</td>
 </tr>
 <tr>
@@ -453,7 +468,18 @@
 <td style="text-align: left">Find collection of signals by IDS</td>
 </tr>
 </tbody></table>
-<h1 id='articles'>Articles</h1><h2 id='get-all-articles'>Get All Articles</h2>
+<h1 id='articles'>Articles</h1>
+<p>L&#39;API &quot;Articles&quot; permet d&#39;interagir avec des articles via différentes requêtes HTTP. Vous pouvez récupérer les derniers articles, effectuer des recherches, ou consulter des collections d&#39;articles à l&#39;aide d&#39;IDs spécifiques. Voici les principales routes :</p>
+
+<ul>
+<li><strong><span class="method-get">GET</span> <a href="#get-last-articles">/articles</a></strong> : Récupère les derniers articles disponibles.</li>
+<li><strong><span class="method-get">GET</span> <a href="#search-for-list-of-articles">/articles/search</a></strong> : Permet de rechercher une liste d&#39;articles en fonction de critères spécifiques.</li>
+<li><strong><span class="method-get">GET</span> <a href="#find-article-by-id">/articles/{articleId}</a></strong> : Trouve un article précis à partir de son identifiant unique (ID).</li>
+<li><strong><span class="method-get">GET</span> <a href="#find-collection-of-articles-by-id">/articles/collection</a></strong> : Récupère une collection d&#39;articles en fournissant une liste d&#39;IDs.</li>
+</ul>
+
+<p>Consultez ce lien pour tester : <a href="https://api.decidento.com/documentation/" target="_blank" rel="noopener noreferrer">API Decidento</a>.</p>
+<h2 id='get-last-articles'>Get last Articles</h2>
 <blockquote>
 <p>This query returns JSON structured like this:</p>
 </blockquote>
@@ -776,7 +802,7 @@
 
 <table><thead>
 <tr>
-<th>Field</th>
+<th>Nom</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
@@ -784,16 +810,16 @@
 <tr>
 <td>id</td>
 <td>Entier</td>
-<td>index de l&#39;article</td>
+<td>Index de l&#39;article</td>
 </tr>
 <tr>
 <td>title</td>
-<td>Chaine de caractères</td>
+<td>Chaîne de caractères</td>
 <td>Le titre de l&#39;article chez Decidento</td>
 </tr>
 <tr>
 <td>text</td>
-<td>Chaine de caractères</td>
+<td>Chaîne de caractères</td>
 <td>Le corps de l&#39;article chez Decidento</td>
 </tr>
 <tr>
@@ -802,267 +828,277 @@
 <td>La date de publication de l&#39;article sur Decidento</td>
 </tr>
 <tr>
-<td><span class="field">deparments</span></td>
+<td><strong>departments</strong></td>
 <td>Tableau[]</td>
-<td>La date de publication de l&#39;article sur Decidento</td>
+<td>Liste des départements associés à l&#39;article</td>
 </tr>
 <tr>
-<td>departments.code</td>
+<td>&nbsp;&nbsp;&nbsp;departments.code</td>
 <td>Entier</td>
 <td>Code officiel du département en France.</td>
 </tr>
 <tr>
-<td>departments.dep</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;departments.dep</td>
+<td>Chaîne de caractères</td>
 <td>Le nom du département.</td>
 </tr>
 <tr>
-<td>departments.region</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;departments.region</td>
+<td>Chaîne de caractères</td>
 <td>Le nom de la région à laquelle le département appartient.</td>
 </tr>
 <tr>
-<td><span class="field">sources</span></td>
+<td><strong>sources</strong></td>
 <td>Tableau[]</td>
 <td>Liste des sources d&#39;information associés à l&#39;article</td>
 </tr>
 <tr>
-<td>sources.source</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;sources.source</td>
+<td>Chaîne de caractères</td>
 <td>Le nom de la source ou de l&#39;éditeur de l&#39;information. Cela indique d&#39;où provient l&#39;information.</td>
 </tr>
 <tr>
-<td>sources.pub_date</td>
+<td>&nbsp;&nbsp;&nbsp;sources.pub_date</td>
 <td>Date (dd/mm/yyyy)</td>
 <td>La date de publication de l&#39;article dans la source de l&#39;information.</td>
 </tr>
 <tr>
-<td>sources.author</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;sources.author</td>
+<td>Chaîne de caractères</td>
 <td>Le nom de l&#39;auteur de l&#39;article ou de la source d&#39;information. Cela indique qui a rédigé ou créé le contenu.</td>
 </tr>
 <tr>
-<td>sources.uri</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;sources.uri</td>
+<td>Chaîne de caractères</td>
 <td>L&#39;URI (Uniform Resource Identifier) ou l&#39;URL de la source. Cela fournit un lien vers l&#39;article ou le contenu source en ligne.</td>
 </tr>
 <tr>
-<td><span class="field">companies</span></td>
+<td><strong>companies</strong></td>
 <td>Tableau[]</td>
 <td>Liste des entreprises associées à l&#39;article.</td>
 </tr>
 <tr>
-<td>companies.id</td>
+<td>&nbsp;&nbsp;&nbsp;companies.id</td>
 <td>Entier</td>
 <td>Identifiant unique de l&#39;entreprise.</td>
 </tr>
 <tr>
-<td>companies.siren</td>
+<td>&nbsp;&nbsp;&nbsp;companies.siren</td>
 <td>Entier</td>
 <td>Le numéro SIREN de l&#39;entreprise. Identifiant unique de 9 chiffres attribué à chaque entreprise en France.</td>
 </tr>
 <tr>
-<td>companies.siret</td>
+<td>&nbsp;&nbsp;&nbsp;companies.siret</td>
 <td>Entier</td>
 <td>Le numéro SIRET de l&#39;entreprise. Identifiant unique de 14 chiffres qui inclut le SIREN et indique le site de l&#39;entreprise.</td>
 </tr>
 <tr>
-<td>companies.siege</td>
+<td>&nbsp;&nbsp;&nbsp;companies.siege</td>
 <td>Booléen</td>
 <td>Indique si l&#39;entreprise est le siège social (true) ou non (false).</td>
 </tr>
 <tr>
-<td>companies.social_name</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;companies.social_name</td>
+<td>Chaîne de caractères</td>
 <td>Nom social de l&#39;entreprise. Représente la raison sociale sous laquelle l&#39;entreprise est enregistrée.</td>
 </tr>
 <tr>
-<td>companies.sirets[].siret</td>
+<td>&nbsp;&nbsp;&nbsp;companies.sirets[].siret</td>
 <td>Entier</td>
 <td>Numéro SIRET associé à l&#39;entreprise (site spécifique).</td>
 </tr>
 <tr>
-<td>companies.sirets[].type</td>
+<td>&nbsp;&nbsp;&nbsp;companies.sirets[].type</td>
 <td>Entier</td>
 <td>Type de SIRET (ex : type d&#39;activité).</td>
 </tr>
 <tr>
-<td>companies.links[].rel</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;companies.links[].rel</td>
+<td>Chaîne de caractères</td>
 <td>Relation du lien (par exemple, <code>&quot;self&quot;</code>).</td>
 </tr>
 <tr>
-<td>companies.links[].href</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;companies.links[].href</td>
+<td>Chaîne de caractères</td>
 <td>URL du lien.</td>
 </tr>
 <tr>
-<td><span class="field">sectors</span></td>
+<td><strong>sectors</strong></td>
 <td>Tableau[]</td>
 <td>Liste des secteurs d&#39;activité associés à l&#39;article.</td>
 </tr>
 <tr>
-<td>sectors[].activity</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;sectors[].activity</td>
+<td>Chaîne de caractères</td>
 <td>Le nom de l&#39;activité ou du secteur dans lequel l&#39;entreprise opère.</td>
 </tr>
 <tr>
-<td>sectors[].picture</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;sectors[].picture</td>
+<td>Chaîne de caractères</td>
 <td>L&#39;URL de l&#39;image représentant le secteur d&#39;activité.</td>
 </tr>
 <tr>
-<td><span class="field">quoted_articles</span></td>
+<td><strong>quoted_articles</strong></td>
 <td>Tableau[]</td>
 <td>Liste des articles cités dans l&#39;article principal.</td>
 </tr>
 <tr>
-<td>quoted_articles[].id</td>
+<td>&nbsp;&nbsp;&nbsp;quoted_articles[].id</td>
 <td>Entier</td>
 <td>Identifiant unique de l&#39;article cité.</td>
 </tr>
 <tr>
-<td>quoted_articles[].title</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;quoted_articles[].title</td>
+<td>Chaîne de caractères</td>
 <td>Titre de l&#39;article cité. Représente le sujet principal abordé dans l&#39;article.</td>
 </tr>
 <tr>
-<td>quoted_articles[].links</td>
+<td>&nbsp;&nbsp;&nbsp;quoted_articles[].links</td>
 <td>Objet</td>
 <td>Liens associés à l&#39;article cité. Référence à la structure de liens décrite dans le schéma.</td>
 </tr>
 <tr>
-<td><span class="field">signals</span></td>
+<td><strong>signals</strong></td>
 <td>Tableau[]</td>
 <td>Liste des signaux associés, contenant des informations sur les entreprises et les projets.</td>
 </tr>
 <tr>
-<td>signals[].id</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].id</td>
 <td>Entier</td>
 <td>Identifiant unique du signal.</td>
 </tr>
 <tr>
-<td>signals[].last_article_pubdate</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].last_article_pubdate</td>
 <td>Date (dd/mm/yyyy)</td>
 <td>Date de publication du dernier article associé au signal.</td>
 </tr>
 <tr>
-<td>signals[].creation_date</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].creation_date</td>
 <td>Date (dd/mm/yyyy)</td>
 <td>Date de création du signal.</td>
 </tr>
 <tr>
-<td>signals[].last_update</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].last_update</td>
 <td>Date (dd/mm/yyyy)</td>
 <td>Date de la dernière mise à jour du signal.</td>
 </tr>
 <tr>
-<td>signals[].follow_date</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].follow_date</td>
 <td>Date (dd/mm/yyyy)</td>
 <td>Date à laquelle le signal a été suivi.</td>
 </tr>
 <tr>
-<td>signals[].type</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].type</td>
+<td>Chaîne de caractères</td>
 <td>Type du signal. Indique la catégorie ou la nature du signal.</td>
 </tr>
 <tr>
-<td>signals[].label_type</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].label_type</td>
+<td>Chaîne de caractères</td>
 <td>Étiquette ou description du type de signal.</td>
 </tr>
 <tr>
-<td>signals[].status</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].status</td>
+<td>Chaîne de caractères</td>
 <td>État actuel du signal, par exemple, &quot;Détecté&quot;.</td>
 </tr>
 <tr>
-<td>signals[].company_main[].id</td>
+<td><strong>company_main</strong></td>
+<td>Objet</td>
+<td>Informations sur l&#39;entreprise principale associée au signal.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;signals[].company_main[].id</td>
 <td>Entier</td>
 <td>Identifiant unique de l&#39;entreprise principale.</td>
 </tr>
 <tr>
-<td>signals[].company_main[].siren</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].company_main[].siren</td>
 <td>Entier</td>
 <td>Numéro SIREN de l&#39;entreprise principale.</td>
 </tr>
 <tr>
-<td>signals[].company_main[].siret</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].company_main[].siret</td>
 <td>Entier</td>
 <td>Numéro SIRET de l&#39;entreprise principale.</td>
 </tr>
 <tr>
-<td>signals[].company_main[].siege</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].company_main[].siege</td>
 <td>Booléen</td>
 <td>Indique si l&#39;entreprise est le siège social.</td>
 </tr>
 <tr>
-<td>signals[].company_main[].social_name</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].company_main[].social_name</td>
+<td>Chaîne de caractères</td>
 <td>Nom social de l&#39;entreprise principale.</td>
 </tr>
 <tr>
-<td>signals[].company_main[].sirets[].siret</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].company_main[].sirets[].siret</td>
 <td>Entier</td>
 <td>Numéro SIRET associé à l&#39;entreprise.</td>
 </tr>
 <tr>
-<td>signals[].company_main[].sirets[].type</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].company_main[].sirets[].type</td>
 <td>Entier</td>
 <td>Type du SIRET (classification de l&#39;activité).</td>
 </tr>
 <tr>
-<td>signals[].company_main[].links[].rel</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].company_main[].links[].rel</td>
+<td>Chaîne de caractères</td>
 <td>Relation du lien (ex: &quot;self&quot;).</td>
 </tr>
 <tr>
-<td>signals[].company_main[].links[].href</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].company_main[].links[].href</td>
 <td>URI</td>
 <td>Lien vers les informations de l&#39;entreprise.</td>
 </tr>
 <tr>
-<td>signals[].company_alt[].id</td>
+<td><strong>company_alt</strong></td>
+<td>Objet</td>
+<td>Informations sur l&#39;entreprise alternative associée au signal.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;signals[].company_alt[].id</td>
 <td>Entier</td>
 <td>Identifiant unique de l&#39;entreprise alternative.</td>
 </tr>
 <tr>
-<td>signals[].company_alt[].siren</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].company_alt[].siren</td>
 <td>Entier</td>
 <td>Numéro SIREN de l&#39;entreprise alternative.</td>
 </tr>
 <tr>
-<td>signals[].company_alt[].siret</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].company_alt[].siret</td>
 <td>Entier</td>
 <td>Numéro SIRET de l&#39;entreprise alternative.</td>
 </tr>
 <tr>
-<td>signals[].company_alt[].siege</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].company_alt[].siege</td>
 <td>Booléen</td>
 <td>Indique si l&#39;entreprise alternative est le siège social.</td>
 </tr>
 <tr>
-<td>signals[].company_alt[].social_name</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].company_alt[].social_name</td>
+<td>Chaîne de caractères</td>
 <td>Nom social de l&#39;entreprise alternative.</td>
 </tr>
 <tr>
-<td>signals[].company_alt[].sirets[].siret</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].company_alt[].sirets[].siret</td>
 <td>Entier</td>
 <td>Numéro SIRET associé à l&#39;entreprise alternative.</td>
 </tr>
 <tr>
-<td>signals[].company_alt[].sirets[].type</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].company_alt[].sirets[].type</td>
 <td>Entier</td>
 <td>Type du SIRET (classification de l&#39;activité).</td>
 </tr>
 <tr>
-<td>signals[].company_alt[].links[].rel</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].company_alt[].links[].rel</td>
+<td>Chaîne de caractères</td>
 <td>Relation du lien (ex: &quot;self&quot;).</td>
 </tr>
 <tr>
-<td>signals[].company_alt[].links[].href</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].company_alt[].links[].href</td>
 <td>URI</td>
 <td>Lien vers les informations de l&#39;entreprise alternative.</td>
 </tr>
@@ -1077,48 +1113,58 @@
 <td>Liste des pays associés au signal.</td>
 </tr>
 <tr>
-<td>signals[].departments[].code</td>
+<td><strong>departments</strong></td>
+<td>Objet</td>
+<td>Départements associés au signal.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;signals[].departments[].code</td>
 <td>Entier</td>
 <td>Code du département associé au signal.</td>
 </tr>
 <tr>
-<td>signals[].departments[].dep</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].departments[].dep</td>
+<td>Chaîne de caractères</td>
 <td>Nom du département associé au signal.</td>
 </tr>
 <tr>
-<td>signals[].departments[].region</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].departments[].region</td>
+<td>Chaîne de caractères</td>
 <td>Nom de la région associée au signal.</td>
 </tr>
 <tr>
-<td>signals[].city[].label</td>
-<td>Chaine de caractères</td>
+<td><strong>city</strong></td>
+<td>Objet</td>
+<td>Ville associée au signal.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;signals[].city[].label</td>
+<td>Chaîne de caractères</td>
 <td>Nom de la ville associée au signal.</td>
 </tr>
 <tr>
-<td>signals[].city[].zip_code</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].city[].zip_code</td>
+<td>Chaîne de caractères</td>
 <td>Code postal de la ville associée au signal.</td>
 </tr>
 <tr>
-<td>signals[].city[].insee_code</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].city[].insee_code</td>
+<td>Chaîne de caractères</td>
 <td>Code INSEE de la ville associée au signal.</td>
 </tr>
 <tr>
-<td>signals[].city[].departement_code</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].city[].departement_code</td>
+<td>Chaîne de caractères</td>
 <td>Code du département de la ville associée au signal.</td>
 </tr>
 <tr>
 <td>signals[].city_label</td>
-<td>Chaine de caractères</td>
+<td>Chaîne de caractères</td>
 <td>Label de la ville associée au signal.</td>
 </tr>
 <tr>
 <td>signals[].city_zip_code</td>
-<td>Chaine de caractères</td>
+<td>Chaîne de caractères</td>
 <td>Code postal de la ville associée au signal (peut être différent de zip_code).</td>
 </tr>
 <tr>
@@ -1162,92 +1208,102 @@
 <td>Coût total des installations.</td>
 </tr>
 <tr>
-<td>signals[].maitre_ouvrage.id</td>
+<td><strong>maitre_ouvrage</strong></td>
+<td>Objet</td>
+<td>Informations sur le maître d&#39;ouvrage.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;signals[].maitre_ouvrage.id</td>
 <td>Entier</td>
 <td>Identifiant unique du maître d&#39;ouvrage.</td>
 </tr>
 <tr>
-<td>signals[].maitre_ouvrage.siren</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].maitre_ouvrage.siren</td>
 <td>Entier</td>
 <td>Numéro SIREN du maître d&#39;ouvrage.</td>
 </tr>
 <tr>
-<td>signals[].maitre_ouvrage.siret</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].maitre_ouvrage.siret</td>
 <td>Entier</td>
 <td>Numéro SIRET du maître d&#39;ouvrage.</td>
 </tr>
 <tr>
-<td>signals[].maitre_ouvrage.siege</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].maitre_ouvrage.siege</td>
 <td>Booléen</td>
 <td>Indique si le maître d&#39;ouvrage est le siège social.</td>
 </tr>
 <tr>
-<td>signals[].maitre_ouvrage.social_name</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].maitre_ouvrage.social_name</td>
+<td>Chaîne de caractères</td>
 <td>Nom social du maître d&#39;ouvrage.</td>
 </tr>
 <tr>
-<td>signals[].maitre_ouvrage.sirets[].siret</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].maitre_ouvrage.sirets[].siret</td>
 <td>Entier</td>
 <td>Numéro SIRET associé au maître d&#39;ouvrage.</td>
 </tr>
 <tr>
-<td>signals[].maitre_ouvrage.sirets[].type</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].maitre_ouvrage.sirets[].type</td>
 <td>Entier</td>
 <td>Type du SIRET (classification de l&#39;activité) du maître d&#39;ouvrage.</td>
 </tr>
 <tr>
-<td>signals[].maitre_ouvrage.links[].rel</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].maitre_ouvrage.links[].rel</td>
+<td>Chaîne de caractères</td>
 <td>Relation du lien (ex: &quot;self&quot;) pour le maître d&#39;ouvrage.</td>
 </tr>
 <tr>
-<td>signals[].maitre_ouvrage.links[].href</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].maitre_ouvrage.links[].href</td>
 <td>URI</td>
 <td>Lien vers les informations du maître d&#39;ouvrage.</td>
 </tr>
 <tr>
-<td>signals[].maitre_oeuvre.id</td>
+<td><strong>maitre_oeuvre</strong></td>
+<td>Objet</td>
+<td>Informations sur le maître d&#39;œuvre.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;signals[].maitre_oeuvre.id</td>
 <td>Entier</td>
 <td>Identifiant unique du maître d&#39;œuvre.</td>
 </tr>
 <tr>
-<td>signals[].maitre_oeuvre.siren</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].maitre_oeuvre.siren</td>
 <td>Entier</td>
 <td>Numéro SIREN du maître d&#39;œuvre.</td>
 </tr>
 <tr>
-<td>signals[].maitre_oeuvre.siret</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].maitre_oeuvre.siret</td>
 <td>Entier</td>
 <td>Numéro SIRET du maître d&#39;œuvre.</td>
 </tr>
 <tr>
-<td>signals[].maitre_oeuvre.siege</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].maitre_oeuvre.siege</td>
 <td>Booléen</td>
 <td>Indique si le maître d&#39;œuvre est le siège social.</td>
 </tr>
 <tr>
-<td>signals[].maitre_oeuvre.social_name</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].maitre_oeuvre.social_name</td>
+<td>Chaîne de caractères</td>
 <td>Nom social du maître d&#39;œuvre.</td>
 </tr>
 <tr>
-<td>signals[].maitre_oeuvre.sirets[].siret</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].maitre_oeuvre.sirets[].siret</td>
 <td>Entier</td>
 <td>Numéro SIRET associé au maître d&#39;œuvre.</td>
 </tr>
 <tr>
-<td>signals[].maitre_oeuvre.sirets[].type</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].maitre_oeuvre.sirets[].type</td>
 <td>Entier</td>
 <td>Type du SIRET (classification de l&#39;activité) du maître d&#39;œuvre.</td>
 </tr>
 <tr>
-<td>signals[].maitre_oeuvre.links[].rel</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].maitre_oeuvre.links[].rel</td>
+<td>Chaîne de caractères</td>
 <td>Relation du lien (ex: &quot;self&quot;) pour le maître d&#39;œuvre.</td>
 </tr>
 <tr>
-<td>signals[].maitre_oeuvre.links[].href</td>
+<td>&nbsp;&nbsp;&nbsp;signals[].maitre_oeuvre.links[].href</td>
 <td>URI</td>
 <td>Lien vers les informations du maître d&#39;œuvre.</td>
 </tr>
@@ -1263,12 +1319,12 @@
 </tr>
 <tr>
 <td>signals[].building_permit.permit_number</td>
-<td>Chaine de caractères</td>
+<td>Chaîne de caractères</td>
 <td>Numéro du permis de construire associé au signal.</td>
 </tr>
 <tr>
 <td>signals[].building_permit.type</td>
-<td>Chaine de caractères</td>
+<td>Chaîne de caractères</td>
 <td>Type de permis de construire (ex: &quot;permis_amenager&quot;).</td>
 </tr>
 </tbody></table>
@@ -1311,7 +1367,7 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves a list of articles.</p>
+<p>This endpoint retrieves a list of articles according to the query parameters shown below.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <style>
   .method-get {
@@ -1405,54 +1461,54 @@
 <td>Date de publication de l&#39;article.</td>
 </tr>
 <tr>
-<td>companies_links</td>
+<td><strong>companies_links</strong></td>
 <td>Tableau[]</td>
 <td>Liste des liens associés aux entreprises.</td>
 </tr>
 <tr>
-<td>companies_links.id</td>
+<td>&nbsp;&nbsp;&nbsp;companies_links.id</td>
 <td>Entier</td>
 <td>Identifiant de l&#39;entreprise.</td>
 </tr>
 <tr>
-<td>companies_links.siren</td>
+<td>&nbsp;&nbsp;&nbsp;companies_links.siren</td>
 <td>Entier</td>
 <td>Numéro SIREN de l&#39;entreprise.</td>
 </tr>
 <tr>
-<td>companies_links.links</td>
+<td>&nbsp;&nbsp;&nbsp;companies_links.links</td>
 <td>Tableau[]</td>
 <td>Liste des liens associés à l&#39;entreprise.</td>
 </tr>
 <tr>
-<td>companies_links.links.rel</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;companies_links.links.rel</td>
+<td>Chaîne de caractères</td>
 <td>Relation du lien (ex. &quot;self&quot;).</td>
 </tr>
 <tr>
-<td>companies_links.links.href</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;companies_links.links.href</td>
+<td>Chaîne de caractères</td>
 <td>URI du lien vers l&#39;entreprise.</td>
 </tr>
 <tr>
-<td>links</td>
+<td><strong>links</strong></td>
 <td>Tableau[]</td>
 <td>Liste des liens associés à l&#39;article.</td>
 </tr>
 <tr>
-<td>links[].rel</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;links[].rel</td>
+<td>Chaîne de caractères</td>
 <td>Relation du lien (ex. &quot;self&quot;, &quot;extranet&quot;).</td>
 </tr>
 <tr>
-<td>links[].href</td>
-<td>Chaine de caractères</td>
+<td>&nbsp;&nbsp;&nbsp;links[].href</td>
+<td>Chaîne de caractères</td>
 <td>URI du lien vers l&#39;article ou l&#39;extranet.</td>
 </tr>
 </tbody></table>
 <h2 id='find-article-by-id'>Find Article by id</h2>
 <blockquote>
-<p>The above command returns JSON structured like : <a href="#get-all-articles">this</a></p>
+<p>This query returns JSON structured like : <a href="#get-all-articles">this</a></p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code></code></pre></div>
 <p>This endpoint retrieves article by id.</p>
@@ -1466,7 +1522,7 @@
 
 <p><span class="method-get">GET </span>
 <code>https://api.decidento.com/articles/{articleId}/</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1475,12 +1531,12 @@
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>L&#39;id de l&#39;article</td>
+<td>L&#39;ID de l&#39;article</td>
 </tr>
 </tbody></table>
 <h2 id='find-collection-of-articles-by-id'>Find collection of Articles by id</h2>
 <blockquote>
-<p>The above command returns JSON structured like : <a href="#get-all-articles">this</a></p>
+<p>This query returns JSON structured like : <a href="#get-all-articles">this</a></p>
 </blockquote>
 
 <p>This endpoint retrieves a list of articles by IDs.</p>
@@ -1494,7 +1550,7 @@
 
 <p><span class="method-get">GET </span>
 <code>https://api.decidento.com/articles/collection/</code></p>
-<h3 id='query-parameters-2'>Query Parameters</h3>
+<h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1505,12 +1561,25 @@
 <tr>
 <td>listIds</td>
 <td>Tableau de chaine de caractères</td>
-<td>L&#39;id de l&#39;article</td>
+<td>Les IDs des articles</td>
 </tr>
 </tbody></table>
-<h1 id='companies'>Companies</h1><h2 id='get-all-companies'>Get All Companies</h2>
+<h1 id='companies'>Companies</h1>
+<p>L&#39;API &quot;Companies&quot; permet de rechercher et de récupérer des informations détaillées sur des sociétés à partir de plusieurs types d&#39;identifiants et de paramètres. Voici les principales routes disponibles :</p>
+
+<ul>
+<li><strong><span class="method-get">GET</span> <a href="#get-all-companies">/companies</a></strong> : Recherche de sociétés en utilisant divers paramètres de recherche.</li>
+<li><strong><span class="method-get">GET</span> <a href="#find-company-by-id">/companies/{companyId}</a></strong> : Récupère les détails d&#39;une société spécifique à partir de son identifiant unique (ID).</li>
+<li><strong><span class="method-get">GET</span> <a href="#find-list-of-companies-by-ids">/companies/collection</a></strong> : Récupère une collection de sociétés en fournissant une liste d&#39;IDs.</li>
+<li><strong><span class="method-get">GET</span> <a href="#find-list-of-companies">/companies/v2</a></strong> : Nouvelle version pour la recherche de sociétés avec des paramètres avancés.</li>
+<li><strong><span class="method-get">GET</span> <a href="#find-company-by-its-unique-identifier-cccid">/companies/{companyCccid}/v2</a></strong> : Trouve une société en utilisant son identifiant unique CCCID.</li>
+<li><strong><span class="method-get">GET</span> <a href="#find-a-collection-of-companies-by-their-siren">/companies/collection/v2</a></strong> : Récupère une collection de sociétés en fournissant une liste de numéros SIREN.</li>
+</ul>
+
+<p>Consultez ce lien pour tester : <a href="https://api.decidento.com/documentation/" target="_blank" rel="noopener noreferrer">API Decidento</a>.</p>
+<h2 id='get-all-companies'>Get All Companies</h2>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>This query returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
@@ -1542,7 +1611,7 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves all companies.</p>
+<p>This endpoint retrieves all companies according to the query parameters shown below.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <style>
   .method-get {
@@ -1647,39 +1716,39 @@
 <td>Nom social de l&#39;entreprise</td>
 </tr>
 <tr>
-<td>sirets</td>
+<td><strong>sirets</strong></td>
 <td>Tableau[]</td>
 <td>Liste des SIRET de l&#39;entreprise avec leurs types</td>
 </tr>
 <tr>
-<td>sirets.siret</td>
+<td>&nbsp;&nbsp;&nbsp;sirets.siret</td>
 <td>Entier</td>
 <td>Numéro SIRET associé à l&#39;entreprise</td>
 </tr>
 <tr>
-<td>sirets.type</td>
+<td>&nbsp;&nbsp;&nbsp;sirets.type</td>
 <td>Entier</td>
 <td>Type associé au SIRET</td>
 </tr>
 <tr>
-<td>links</td>
+<td><strong>links</strong></td>
 <td>Tableau[]</td>
 <td>Liste des liens associés à l&#39;entreprise</td>
 </tr>
 <tr>
-<td>links.rel</td>
+<td>&nbsp;&nbsp;&nbsp;links.rel</td>
 <td>Chaîne de caractères</td>
 <td>Relation du lien</td>
 </tr>
 <tr>
-<td>links.href</td>
+<td>&nbsp;&nbsp;&nbsp;links.href</td>
 <td>Chaîne de caractères</td>
 <td>URL du lien</td>
 </tr>
 </tbody></table>
 <h2 id='find-company-by-id'>Find Company by ID</h2>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>This query returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
@@ -1767,7 +1836,7 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves some company by its ID.</p>
+<p>This endpoint retrieves a company by its ID.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <style>
   .method-get {
@@ -1837,32 +1906,32 @@
 <td>Raison sociale de l&#39;entreprise</td>
 </tr>
 <tr>
-<td>sirets</td>
+<td><strong>sirets</strong></td>
 <td>tableau</td>
 <td>Liste des numéros SIRET associés</td>
 </tr>
 <tr>
-<td>sirets.siret</td>
+<td>&nbsp;&nbsp;&nbsp;sirets.siret</td>
 <td>entier</td>
 <td>Numéro SIRET de l&#39;établissement</td>
 </tr>
 <tr>
-<td>sirets.type</td>
+<td>&nbsp;&nbsp;&nbsp;sirets.type</td>
 <td>entier</td>
 <td>Code de type de l&#39;établissement</td>
 </tr>
 <tr>
-<td>links</td>
+<td><strong>links</strong></td>
 <td>tableau</td>
 <td>Liste des liens associés</td>
 </tr>
 <tr>
-<td>links.rel</td>
+<td>&nbsp;&nbsp;&nbsp;links.rel</td>
 <td>chaîne de caractères</td>
 <td>Type de relation</td>
 </tr>
 <tr>
-<td>links.href</td>
+<td>&nbsp;&nbsp;&nbsp;links.href</td>
 <td>chaîne de caractères</td>
 <td>URL vers les informations de l&#39;entreprise</td>
 </tr>
@@ -2092,17 +2161,17 @@
 <td>Adresse e-mail de contact</td>
 </tr>
 <tr>
-<td>contacts</td>
+<td><strong>contacts</strong></td>
 <td>tableau</td>
 <td>Liste des contacts de l&#39;entreprise</td>
 </tr>
 <tr>
-<td>contacts.name</td>
+<td>&nbsp;&nbsp;&nbsp;contacts.name</td>
 <td>chaîne de caractères</td>
 <td>Nom de la personne de contact</td>
 </tr>
 <tr>
-<td>contacts.role</td>
+<td>&nbsp;&nbsp;&nbsp;contacts.role</td>
 <td>chaîne de caractères</td>
 <td>Rôle ou fonction du contact</td>
 </tr>
@@ -2114,7 +2183,7 @@
 </tbody></table>
 <h2 id='find-list-of-companies-by-ids'>Find list of companies by IDs</h2>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>This query returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
@@ -2202,7 +2271,7 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves some company by its ID.</p>
+<p>This endpoint retrieves companies according to the query parameters shown below.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <style>
   .method-get {
@@ -2282,32 +2351,32 @@
 <td>Raison sociale de l&#39;entreprise</td>
 </tr>
 <tr>
-<td>sirets</td>
+<td><strong>sirets</strong></td>
 <td>tableau</td>
 <td>Liste des numéros SIRET associés</td>
 </tr>
 <tr>
-<td>sirets.siret</td>
+<td>&nbsp;&nbsp;&nbsp;sirets.siret</td>
 <td>entier</td>
 <td>Numéro SIRET de l&#39;établissement</td>
 </tr>
 <tr>
-<td>sirets.type</td>
+<td>&nbsp;&nbsp;&nbsp;sirets.type</td>
 <td>entier</td>
 <td>Code de type de l&#39;établissement</td>
 </tr>
 <tr>
-<td>links</td>
+<td><strong>links</strong></td>
 <td>tableau</td>
 <td>Liste des liens associés</td>
 </tr>
 <tr>
-<td>links.rel</td>
+<td>&nbsp;&nbsp;&nbsp;links.rel</td>
 <td>chaîne de caractères</td>
 <td>Type de relation</td>
 </tr>
 <tr>
-<td>links.href</td>
+<td>&nbsp;&nbsp;&nbsp;links.href</td>
 <td>chaîne de caractères</td>
 <td>URL vers les informations de l&#39;entreprise</td>
 </tr>
@@ -2537,17 +2606,17 @@
 <td>Adresse e-mail de contact</td>
 </tr>
 <tr>
-<td>contacts</td>
+<td><strong>contacts</strong></td>
 <td>tableau</td>
 <td>Liste des contacts de l&#39;entreprise</td>
 </tr>
 <tr>
-<td>contacts.name</td>
+<td>&nbsp;&nbsp;&nbsp;contacts.name</td>
 <td>chaîne de caractères</td>
 <td>Nom de la personne de contact</td>
 </tr>
 <tr>
-<td>contacts.role</td>
+<td>&nbsp;&nbsp;&nbsp;contacts.role</td>
 <td>chaîne de caractères</td>
 <td>Rôle ou fonction du contact</td>
 </tr>
@@ -2559,7 +2628,7 @@
 </tbody></table>
 <h2 id='find-list-of-companies'>Find list of companies</h2>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>This query returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
@@ -2914,20 +2983,1769 @@
 <td>URL du logo de l&#39;entreprise</td>
 </tr>
 <tr>
-<td>links</td>
+<td><strong>links</strong></td>
 <td>Liste d&#39;objets</td>
 <td>Liens associés à l&#39;entreprise</td>
 </tr>
 </tbody></table>
+<h2 id='find-company-by-its-unique-identifier-cccid'>Find company by its unique identifier CCCID</h2>
+<blockquote>
+<p>This query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"cccid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR_519570196"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"siren"</span><span class="p">:</span><span class="w"> </span><span class="s2">"519570196"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"siret_siege"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51957019600047"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type_etablissement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"siege"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"raison_sociale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOVAWAY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"appartient_groupe"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"adresse_complete"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13 rue Jules Valles 69100 VILLEURBANNE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"adresse_postale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13 rue Jules Valles"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code_postal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"69100"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ville"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VILLEURBANNE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_modified"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sigle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resume_activite"</span><span class="p">:</span><span class="w"> </span><span class="s2">"développement de logiciels métiers applications et plateformes web"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pays"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"radiee"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nbre_signaux"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nbre_articles"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://pbs.twimg.com/profile_images/730069922391465984/iosvIlkK_400x400.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"links\""</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://decidentov2.local-centos7.com/companies/FR_519570196"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"extranet"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://decidentov2.local-centos7.com/app_dev.php/extranet/company/infoplusV2/FR_519570196"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/FR_519570196"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"extranet"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/extranet/company/infoplusV2/FR_519570196"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"nombre_etablissements_secondaires_inactifs"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nombre_etablissements_secondaires_actifs"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"caractere_employeur"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"enseignes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date_creation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2010-01-05"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"numero_tva"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR43519570196"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"04 82 53 99 00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"departement_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rhône"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"departement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"69"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"geo_lat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45.769417"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"geo_long"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.864512"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code_ape"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62.01Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code_ape_brut"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6201Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code_ape_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Programmation informatique"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code_ape_complet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6201Z - Programmation informatique"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"forme_juridique_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5710"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"forme_juridique"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAS société par actions simplifiée"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type_entreprise"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PME"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"site_ecommerce"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"activite_rd"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"activite_export"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cac40"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"startup"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"secteur_industriel"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"entreprise_fintech"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"entreprise_familiale"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"entreprise_b2c"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"entreprise_b2b"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"entreprise_biotech_medtech"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url_twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://twitter.com/@novaway"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url_facebook"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.facebook.com/novawayfr/"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url_linkedin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.linkedin.com/company/novaway/"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email_contact"</span><span class="p">:</span><span class="w"> </span><span class="s2">"contact@novaway.fr"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code_confidentialite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"avertissement_bilan"</span><span class="p">:</span><span class="w"> </span><span class="s2">"les bilans étant confidentiels ou non disponibles nous ne pouvons afficher toutes les données chiffrées"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"subventions_investissements"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"participation_bilan"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resultat_bilan"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resultat_net_consolide"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dotations_amortissements"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ca_consolide"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resultat_exploitation"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ca_bilan"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"impots_taxes"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"effectif_sous_traitance"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"charges_financieres"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"salaires_traitements"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ca_export"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ca_france"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"effectif"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fonds_propres"</span><span class="p">:</span><span class="w"> </span><span class="mi">529033</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"capital_social"</span><span class="p">:</span><span class="w"> </span><span class="mi">13500</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"duree_exercice"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"annee_cloture_exercice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date_cloture_exercice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P.Physique"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mr X"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxx"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Président"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P.Physique"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Miss Y"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Directeur général"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yyyy"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a company by its unique identifier CCCID.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<style>
+  .method-get {
+    color: green;
+    font-weight: bold;
+  }
+</style>
+
+<p><span class="method-get">GET </span>
+<code>https://api.decidento.com/companies/v2</code></p>
+<h3 id='query-parameters-5'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Champ</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>companyCccid *</td>
+<td>Chaîne de caractères</td>
+<td>CCCID de l&#39;entreprise à retourner (obligatoire)</td>
+</tr>
+<tr>
+<td>Exemple : FR_327888111</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>_format</td>
+<td>Chaîne de caractères</td>
+<td>Format de sortie</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeurs disponibles : json, xml</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Valeur par défaut : json</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='reponse-5'>Reponse</h3>
+<style>
+  .field {
+    font-weight: bold;
+  }
+</style>
+
+<table><thead>
+<tr>
+<th>Champ</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cccid</td>
+<td>Chaîne de caractères</td>
+<td>Code CCCID de l&#39;entreprise (ex: FR_519570196)</td>
+</tr>
+<tr>
+<td>siren</td>
+<td>Chaîne de caractères</td>
+<td>Code SIREN de l&#39;entreprise (ex: 519570196)</td>
+</tr>
+<tr>
+<td>siret_siege</td>
+<td>Chaîne de caractères</td>
+<td>Code SIRET du siège de l&#39;entreprise (ex: 51957019600047)</td>
+</tr>
+<tr>
+<td>type_etablissement</td>
+<td>Chaîne de caractères</td>
+<td>Type d&#39;établissement (ex: siège)</td>
+</tr>
+<tr>
+<td>raison_sociale</td>
+<td>Chaîne de caractères</td>
+<td>Raison sociale de l&#39;entreprise (ex: NOVAWAY)</td>
+</tr>
+<tr>
+<td>appartient_groupe</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise appartient à un groupe (true/false)</td>
+</tr>
+<tr>
+<td>adresse_complete</td>
+<td>Chaîne de caractères</td>
+<td>Adresse complète de l&#39;entreprise (ex: 13 rue Jules Valles 69100 VILLEURBANNE)</td>
+</tr>
+<tr>
+<td>adresse_postale</td>
+<td>Chaîne de caractères</td>
+<td>Adresse postale de l&#39;entreprise (ex: 13 rue Jules Valles)</td>
+</tr>
+<tr>
+<td>code_postal</td>
+<td>Chaîne de caractères</td>
+<td>Code postal de l&#39;entreprise (ex: 69100)</td>
+</tr>
+<tr>
+<td>ville</td>
+<td>Chaîne de caractères</td>
+<td>Ville de l&#39;entreprise (ex: VILLEURBANNE)</td>
+</tr>
+<tr>
+<td>last_modified</td>
+<td>Date</td>
+<td>Date de la dernière modification (nullable)</td>
+</tr>
+<tr>
+<td>sigle</td>
+<td>Chaîne de caractères</td>
+<td>Sigle de l&#39;entreprise (nullable)</td>
+</tr>
+<tr>
+<td>resume_activite</td>
+<td>Chaîne de caractères</td>
+<td>Résumé de l&#39;activité (ex: développement de logiciels métiers, applications et plateformes web)</td>
+</tr>
+<tr>
+<td>pays</td>
+<td>Chaîne de caractères</td>
+<td>Pays de l&#39;entreprise (ex: France)</td>
+</tr>
+<tr>
+<td>radiee</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise est radiée (false)</td>
+</tr>
+<tr>
+<td>nbre_signaux</td>
+<td>Entier</td>
+<td>Nombre de signaux (ex: 0)</td>
+</tr>
+<tr>
+<td>nbre_articles</td>
+<td>Entier</td>
+<td>Nombre d&#39;articles (ex: 0)</td>
+</tr>
+<tr>
+<td>logo_url</td>
+<td>Chaîne de caractères</td>
+<td>URL du logo de l&#39;entreprise</td>
+</tr>
+<tr>
+<td>links</td>
+<td>Tableau</td>
+<td>Liens relatifs (ex: self, extranet)</td>
+</tr>
+<tr>
+<td>nombre_etablissements_secondaires_inactifs</td>
+<td>Entier</td>
+<td>Nombre d&#39;établissements secondaires inactifs (ex: 3)</td>
+</tr>
+<tr>
+<td>nombre_etablissements_secondaires_actifs</td>
+<td>Entier</td>
+<td>Nombre d&#39;établissements secondaires actifs (ex: 0)</td>
+</tr>
+<tr>
+<td>caractere_employeur</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise a un caractère employeur (true/false)</td>
+</tr>
+<tr>
+<td>enseignes</td>
+<td>Chaîne de caractères</td>
+<td>Enseignes associées (nullable)</td>
+</tr>
+<tr>
+<td>date_creation</td>
+<td>Date</td>
+<td>Date de création de l&#39;entreprise (ex: 2010-01-05)</td>
+</tr>
+<tr>
+<td>numero_tva</td>
+<td>Chaîne de caractères</td>
+<td>Numéro de TVA intracommunautaire (ex: FR43519570196)</td>
+</tr>
+<tr>
+<td>telephone</td>
+<td>Chaîne de caractères</td>
+<td>Numéro de téléphone de l&#39;entreprise (ex: 04 82 53 99 00)</td>
+</tr>
+<tr>
+<td>departement_label</td>
+<td>Chaîne de caractères</td>
+<td>Libellé du département (ex: Rhône)</td>
+</tr>
+<tr>
+<td>departement</td>
+<td>Chaîne de caractères</td>
+<td>Code du département (ex: 69)</td>
+</tr>
+<tr>
+<td>geo_lat</td>
+<td>Chaîne de caractères</td>
+<td>Latitude géographique (ex: 45.769417)</td>
+</tr>
+<tr>
+<td>geo_long</td>
+<td>Chaîne de caractères</td>
+<td>Longitude géographique (ex: 4.864512)</td>
+</tr>
+<tr>
+<td>code_ape</td>
+<td>Chaîne de caractères</td>
+<td>Code APE de l&#39;entreprise (ex: 62.01Z)</td>
+</tr>
+<tr>
+<td>code_ape_label</td>
+<td>Chaîne de caractères</td>
+<td>Libellé du code APE (ex: Programmation informatique)</td>
+</tr>
+<tr>
+<td>forme_juridique_code</td>
+<td>Chaîne de caractères</td>
+<td>Code de la forme juridique (ex: 5710)</td>
+</tr>
+<tr>
+<td>forme_juridique</td>
+<td>Chaîne de caractères</td>
+<td>Forme juridique (ex: SAS société par actions simplifiée)</td>
+</tr>
+<tr>
+<td>type_entreprise</td>
+<td>Chaîne de caractères</td>
+<td>Type d&#39;entreprise (ex: PME)</td>
+</tr>
+<tr>
+<td>site_ecommerce</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise a un site e-commerce (true/false)</td>
+</tr>
+<tr>
+<td>activite_rd</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise a une activité de R&amp;D (true/false)</td>
+</tr>
+<tr>
+<td>activite_export</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise fait de l&#39;export (true/false)</td>
+</tr>
+<tr>
+<td>cac40</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise est membre du CAC 40 (false)</td>
+</tr>
+<tr>
+<td>startup</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise est une startup (false)</td>
+</tr>
+<tr>
+<td>secteur_industriel</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise appartient au secteur industriel (false)</td>
+</tr>
+<tr>
+<td>entreprise_fintech</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise est une fintech (false)</td>
+</tr>
+<tr>
+<td>entreprise_familiale</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise est une entreprise familiale (false)</td>
+</tr>
+<tr>
+<td>entreprise_b2c</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise est orientée B2C (true/false)</td>
+</tr>
+<tr>
+<td>entreprise_b2b</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise est orientée B2B (true/false)</td>
+</tr>
+<tr>
+<td>entreprise_biotech_medtech</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise est une biotech ou medtech (false)</td>
+</tr>
+<tr>
+<td>website</td>
+<td>Chaîne de caractères</td>
+<td>URL du site web (nullable)</td>
+</tr>
+<tr>
+<td>url_twitter</td>
+<td>Chaîne de caractères</td>
+<td>URL du compte Twitter (ex: https://twitter.com/@novaway)</td>
+</tr>
+<tr>
+<td>url_facebook</td>
+<td>Chaîne de caractères</td>
+<td>URL de la page Facebook (ex: https://www.facebook.com/novawayfr/)</td>
+</tr>
+<tr>
+<td>url_linkedin</td>
+<td>Chaîne de caractères</td>
+<td>URL du profil LinkedIn (ex: https://www.linkedin.com/company/novaway/)</td>
+</tr>
+<tr>
+<td>email_contact</td>
+<td>Chaîne de caractères</td>
+<td>Email de contact (ex: contact@novaway.fr)</td>
+</tr>
+<tr>
+<td>code_confidentialite</td>
+<td>Booléen</td>
+<td>Code de confidentialité (true/false)</td>
+</tr>
+<tr>
+<td>avertissement_bilan</td>
+<td>Chaîne de caractères</td>
+<td>Avertissement sur les bilans</td>
+</tr>
+<tr>
+<td>subventions_investissements</td>
+<td>Entier</td>
+<td>Subventions et investissements (ex: 123456789)</td>
+</tr>
+<tr>
+<td>participation_bilan</td>
+<td>Entier</td>
+<td>Participation au bilan (ex: 123456789)</td>
+</tr>
+<tr>
+<td>resultat_bilan</td>
+<td>Entier</td>
+<td>Résultat du bilan (ex: 123456789)</td>
+</tr>
+<tr>
+<td>resultat_net_consolide</td>
+<td>Entier</td>
+<td>Résultat net consolidé (ex: 123456789)</td>
+</tr>
+<tr>
+<td>dotations_amortissements</td>
+<td>Entier</td>
+<td>Dotations aux amortissements (ex: 123456789)</td>
+</tr>
+<tr>
+<td>ca_consolide</td>
+<td>Entier</td>
+<td>Chiffre d&#39;affaires consolidé (ex: 123456789)</td>
+</tr>
+<tr>
+<td>resultat_exploitation</td>
+<td>Entier</td>
+<td>Résultat d&#39;exploitation (ex: 123456789)</td>
+</tr>
+<tr>
+<td>ca_bilan</td>
+<td>Entier</td>
+<td>Chiffre d&#39;affaires du bilan (ex: 123456789)</td>
+</tr>
+<tr>
+<td>impots_taxes</td>
+<td>Entier</td>
+<td>Montant des impôts et taxes (ex: 123456789)</td>
+</tr>
+<tr>
+<td>effectif_sous_traitance</td>
+<td>Entier</td>
+<td>Effectif sous-traitance (ex: 123456789)</td>
+</tr>
+<tr>
+<td>charges_financieres</td>
+<td>Entier</td>
+<td>Charges financières (ex: 123456789)</td>
+</tr>
+<tr>
+<td>salaires_traitements</td>
+<td>Entier</td>
+<td>Salaires et traitements (ex: 123456789)</td>
+</tr>
+<tr>
+<td>ca_export</td>
+<td>Entier</td>
+<td>Chiffre d&#39;affaires à l&#39;export (ex: 123456789)</td>
+</tr>
+<tr>
+<td>ca_france</td>
+<td>Entier</td>
+<td>Chiffre d&#39;affaires en France (ex: 123456789)</td>
+</tr>
+<tr>
+<td>effectif</td>
+<td>Entier</td>
+<td>Effectif total de l&#39;entreprise (ex: 10)</td>
+</tr>
+<tr>
+<td>fonds_propres</td>
+<td>Entier</td>
+<td>Fonds propres de l&#39;entreprise (ex: 529033)</td>
+</tr>
+<tr>
+<td>capital_social</td>
+<td>Entier</td>
+<td>Capital social de l&#39;entreprise (ex: 13500)</td>
+</tr>
+<tr>
+<td>duree_exercice</td>
+<td>Entier</td>
+<td>Durée de l&#39;exercice (en mois, ex: 12)</td>
+</tr>
+<tr>
+<td>annee_cloture_exercice</td>
+<td>Année</td>
+<td>Année de clôture de l&#39;exercice (ex: 2020)</td>
+</tr>
+<tr>
+<td>date_cloture_exercice</td>
+<td>Date</td>
+<td>Date de clôture de l&#39;exercice (ex: 2020-12-31)</td>
+</tr>
+<tr>
+<td>contacts</td>
+<td>Tableau</td>
+<td>Liste des contacts de l&#39;entreprise (type, nom, prénom, rôle)</td>
+</tr>
+</tbody></table>
+<h2 id='find-a-collection-of-companies-by-their-siren'>Find a collection of companies by their SIREN</h2>
+<blockquote>
+<p>This query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"cccid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR_519570196"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"siren"</span><span class="p">:</span><span class="w"> </span><span class="s2">"519570196"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"siret_siege"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51957019600047"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type_etablissement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"siege"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"raison_sociale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOVAWAY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"appartient_groupe"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"adresse_complete"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13 rue Jules Valles 69100 VILLEURBANNE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"adresse_postale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13 rue Jules Valles"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code_postal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"69100"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ville"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VILLEURBANNE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_modified"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sigle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resume_activite"</span><span class="p">:</span><span class="w"> </span><span class="s2">"développement de logiciels métiers applications et plateformes web"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pays"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"radiee"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nbre_signaux"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nbre_articles"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://pbs.twimg.com/profile_images/730069922391465984/iosvIlkK_400x400.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"links\""</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://decidentov2.local-centos7.com/companies/FR_519570196"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"extranet"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://decidentov2.local-centos7.com/app_dev.php/extranet/company/infoplusV2/FR_519570196"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/FR_519570196"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"extranet"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/extranet/company/infoplusV2/FR_519570196"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"nombre_etablissements_secondaires_inactifs"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nombre_etablissements_secondaires_actifs"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"caractere_employeur"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"enseignes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date_creation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2010-01-05"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"numero_tva"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR43519570196"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"04 82 53 99 00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"departement_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rhône"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"departement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"69"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"geo_lat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45.769417"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"geo_long"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.864512"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code_ape"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62.01Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code_ape_brut"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6201Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code_ape_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Programmation informatique"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code_ape_complet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6201Z - Programmation informatique"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"forme_juridique_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5710"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"forme_juridique"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAS société par actions simplifiée"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type_entreprise"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PME"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"site_ecommerce"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"activite_rd"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"activite_export"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cac40"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"startup"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"secteur_industriel"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"entreprise_fintech"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"entreprise_familiale"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"entreprise_b2c"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"entreprise_b2b"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"entreprise_biotech_medtech"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url_twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://twitter.com/@novaway"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url_facebook"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.facebook.com/novawayfr/"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url_linkedin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.linkedin.com/company/novaway/"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email_contact"</span><span class="p">:</span><span class="w"> </span><span class="s2">"contact@novaway.fr"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code_confidentialite"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"avertissement_bilan"</span><span class="p">:</span><span class="w"> </span><span class="s2">"les bilans étant confidentiels ou non disponibles nous ne pouvons afficher toutes les données chiffrées"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"subventions_investissements"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"participation_bilan"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resultat_bilan"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resultat_net_consolide"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dotations_amortissements"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ca_consolide"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resultat_exploitation"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ca_bilan"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"impots_taxes"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"effectif_sous_traitance"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"charges_financieres"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"salaires_traitements"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ca_export"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ca_france"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"effectif"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fonds_propres"</span><span class="p">:</span><span class="w"> </span><span class="mi">529033</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"capital_social"</span><span class="p">:</span><span class="w"> </span><span class="mi">13500</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"duree_exercice"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"annee_cloture_exercice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date_cloture_exercice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-31"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P.Physique"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mr X"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxx"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Président"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P.Physique"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Miss Y"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Directeur général"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yyyy"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a list of companies by SIREN.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<style>
+  .method-get {
+    color: green;
+    font-weight: bold;
+  }
+</style>
+
+<p><span class="method-get">GET </span>
+<code>https://api.decidento.com/companies/v2</code></p>
+<h3 id='query-parameters-6'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Champ</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>listIds *</td>
+<td>Tableau[entier]</td>
+<td>Tableau contenant les SIREN des entreprises à retourner</td>
+</tr>
+</tbody></table>
+<h3 id='reponse-6'>Reponse</h3>
+<style>
+  .field {
+    font-weight: bold;
+  }
+</style>
+
+<table><thead>
+<tr>
+<th>Champ</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cccid</td>
+<td>Chaîne de caractères</td>
+<td>Code CCCID de l&#39;entreprise (ex: FR_519570196)</td>
+</tr>
+<tr>
+<td>siren</td>
+<td>Chaîne de caractères</td>
+<td>Code SIREN de l&#39;entreprise (ex: 519570196)</td>
+</tr>
+<tr>
+<td>siret_siege</td>
+<td>Chaîne de caractères</td>
+<td>Code SIRET du siège de l&#39;entreprise (ex: 51957019600047)</td>
+</tr>
+<tr>
+<td>type_etablissement</td>
+<td>Chaîne de caractères</td>
+<td>Type d&#39;établissement (ex: siege)</td>
+</tr>
+<tr>
+<td>raison_sociale</td>
+<td>Chaîne de caractères</td>
+<td>Raison sociale de l&#39;entreprise (ex: NOVAWAY)</td>
+</tr>
+<tr>
+<td>appartient_groupe</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise appartient à un groupe (true/false)</td>
+</tr>
+<tr>
+<td>adresse_complete</td>
+<td>Chaîne de caractères</td>
+<td>Adresse complète de l&#39;entreprise (ex: 13 rue Jules Valles 69100 VILLEURBANNE)</td>
+</tr>
+<tr>
+<td>adresse_postale</td>
+<td>Chaîne de caractères</td>
+<td>Adresse postale de l&#39;entreprise (ex: 13 rue Jules Valles)</td>
+</tr>
+<tr>
+<td>code_postal</td>
+<td>Chaîne de caractères</td>
+<td>Code postal de l&#39;entreprise (ex: 69100)</td>
+</tr>
+<tr>
+<td>ville</td>
+<td>Chaîne de caractères</td>
+<td>Ville de l&#39;entreprise (ex: VILLEURBANNE)</td>
+</tr>
+<tr>
+<td>last_modified</td>
+<td>Date</td>
+<td>Date de la dernière modification (nullable)</td>
+</tr>
+<tr>
+<td>sigle</td>
+<td>Chaîne de caractères</td>
+<td>Sigle de l&#39;entreprise (nullable)</td>
+</tr>
+<tr>
+<td>resume_activite</td>
+<td>Chaîne de caractères</td>
+<td>Résumé de l&#39;activité (ex: développement de logiciels métiers, applications et plateformes web)</td>
+</tr>
+<tr>
+<td>pays</td>
+<td>Chaîne de caractères</td>
+<td>Pays de l&#39;entreprise (ex: France)</td>
+</tr>
+<tr>
+<td>radiee</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise est radiée (false)</td>
+</tr>
+<tr>
+<td>nbre_signaux</td>
+<td>Entier</td>
+<td>Nombre de signaux (ex: 0)</td>
+</tr>
+<tr>
+<td>nbre_articles</td>
+<td>Entier</td>
+<td>Nombre d&#39;articles (ex: 0)</td>
+</tr>
+<tr>
+<td>logo_url</td>
+<td>Chaîne de caractères</td>
+<td>URL du logo de l&#39;entreprise</td>
+</tr>
+<tr>
+<td>links</td>
+<td>Tableau</td>
+<td>Liens relatifs (ex: self, extranet)</td>
+</tr>
+<tr>
+<td>nombre_etablissements_secondaires_inactifs</td>
+<td>Entier</td>
+<td>Nombre d&#39;établissements secondaires inactifs (ex: 3)</td>
+</tr>
+<tr>
+<td>nombre_etablissements_secondaires_actifs</td>
+<td>Entier</td>
+<td>Nombre d&#39;établissements secondaires actifs (ex: 0)</td>
+</tr>
+<tr>
+<td>caractere_employeur</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise a un caractère employeur (true/false)</td>
+</tr>
+<tr>
+<td>enseignes</td>
+<td>Chaîne de caractères</td>
+<td>Enseignes associées (nullable)</td>
+</tr>
+<tr>
+<td>date_creation</td>
+<td>Date</td>
+<td>Date de création de l&#39;entreprise (ex: 2010-01-05)</td>
+</tr>
+<tr>
+<td>numero_tva</td>
+<td>Chaîne de caractères</td>
+<td>Numéro de TVA intracommunautaire (ex: FR43519570196)</td>
+</tr>
+<tr>
+<td>telephone</td>
+<td>Chaîne de caractères</td>
+<td>Numéro de téléphone de l&#39;entreprise (ex: 04 82 53 99 00)</td>
+</tr>
+<tr>
+<td>departement_label</td>
+<td>Chaîne de caractères</td>
+<td>Libellé du département (ex: Rhône)</td>
+</tr>
+<tr>
+<td>departement</td>
+<td>Chaîne de caractères</td>
+<td>Code du département (ex: 69)</td>
+</tr>
+<tr>
+<td>geo_lat</td>
+<td>Chaîne de caractères</td>
+<td>Latitude géographique (ex: 45.769417)</td>
+</tr>
+<tr>
+<td>geo_long</td>
+<td>Chaîne de caractères</td>
+<td>Longitude géographique (ex: 4.864512)</td>
+</tr>
+<tr>
+<td>code_ape</td>
+<td>Chaîne de caractères</td>
+<td>Code APE de l&#39;entreprise (ex: 62.01Z)</td>
+</tr>
+<tr>
+<td>code_ape_label</td>
+<td>Chaîne de caractères</td>
+<td>Libellé du code APE (ex: Programmation informatique)</td>
+</tr>
+<tr>
+<td>forme_juridique_code</td>
+<td>Chaîne de caractères</td>
+<td>Code de la forme juridique (ex: 5710)</td>
+</tr>
+<tr>
+<td>forme_juridique</td>
+<td>Chaîne de caractères</td>
+<td>Forme juridique (ex: SAS société par actions simplifiée)</td>
+</tr>
+<tr>
+<td>type_entreprise</td>
+<td>Chaîne de caractères</td>
+<td>Type d&#39;entreprise (ex: PME)</td>
+</tr>
+<tr>
+<td>site_ecommerce</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise a un site e-commerce (true/false)</td>
+</tr>
+<tr>
+<td>activite_rd</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise a une activité de R&amp;D (true/false)</td>
+</tr>
+<tr>
+<td>activite_export</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise fait de l&#39;export (true/false)</td>
+</tr>
+<tr>
+<td>cac40</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise est membre du CAC 40 (false)</td>
+</tr>
+<tr>
+<td>startup</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise est une startup (false)</td>
+</tr>
+<tr>
+<td>secteur_industriel</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise appartient au secteur industriel (false)</td>
+</tr>
+<tr>
+<td>entreprise_fintech</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise est une fintech (false)</td>
+</tr>
+<tr>
+<td>entreprise_familiale</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise est une entreprise familiale (false)</td>
+</tr>
+<tr>
+<td>entreprise_b2c</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise est orientée B2C (true/false)</td>
+</tr>
+<tr>
+<td>entreprise_b2b</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise est orientée B2B (true/false)</td>
+</tr>
+<tr>
+<td>entreprise_biotech_medtech</td>
+<td>Booléen</td>
+<td>Indique si l&#39;entreprise est une biotech ou medtech (false)</td>
+</tr>
+<tr>
+<td>website</td>
+<td>Chaîne de caractères</td>
+<td>URL du site web (nullable)</td>
+</tr>
+<tr>
+<td>url_twitter</td>
+<td>Chaîne de caractères</td>
+<td>URL du compte Twitter (ex: https://twitter.com/@novaway)</td>
+</tr>
+<tr>
+<td>url_facebook</td>
+<td>Chaîne de caractères</td>
+<td>URL de la page Facebook (ex: https://www.facebook.com/novawayfr/)</td>
+</tr>
+<tr>
+<td>url_linkedin</td>
+<td>Chaîne de caractères</td>
+<td>URL du profil LinkedIn (ex: https://www.linkedin.com/company/novaway/)</td>
+</tr>
+<tr>
+<td>email_contact</td>
+<td>Chaîne de caractères</td>
+<td>Email de contact (ex: contact@novaway.fr)</td>
+</tr>
+<tr>
+<td>code_confidentialite</td>
+<td>Booléen</td>
+<td>Code de confidentialité (true/false)</td>
+</tr>
+<tr>
+<td>avertissement_bilan</td>
+<td>Chaîne de caractères</td>
+<td>Avertissement sur les bilans</td>
+</tr>
+<tr>
+<td>subventions_investissements</td>
+<td>Entier</td>
+<td>Subventions et investissements (ex: 123456789)</td>
+</tr>
+<tr>
+<td>participation_bilan</td>
+<td>Entier</td>
+<td>Participation au bilan (ex: 123456789)</td>
+</tr>
+<tr>
+<td>resultat_bilan</td>
+<td>Entier</td>
+<td>Résultat du bilan (ex: 123456789)</td>
+</tr>
+<tr>
+<td>resultat_net_consolide</td>
+<td>Entier</td>
+<td>Résultat net consolidé (ex: 123456789)</td>
+</tr>
+<tr>
+<td>dotations_amortissements</td>
+<td>Entier</td>
+<td>Dotations aux amortissements (ex: 123456789)</td>
+</tr>
+<tr>
+<td>ca_consolide</td>
+<td>Entier</td>
+<td>Chiffre d&#39;affaires consolidé (ex: 123456789)</td>
+</tr>
+<tr>
+<td>resultat_exploitation</td>
+<td>Entier</td>
+<td>Résultat d&#39;exploitation (ex: 123456789)</td>
+</tr>
+<tr>
+<td>ca_bilan</td>
+<td>Entier</td>
+<td>Chiffre d&#39;affaires du bilan (ex: 123456789)</td>
+</tr>
+<tr>
+<td>impots_taxes</td>
+<td>Entier</td>
+<td>Montant des impôts et taxes (ex: 123456789)</td>
+</tr>
+<tr>
+<td>effectif_sous_traitance</td>
+<td>Entier</td>
+<td>Effectif sous-traitance (ex: 123456789)</td>
+</tr>
+<tr>
+<td>charges_financieres</td>
+<td>Entier</td>
+<td>Charges financières (ex: 123456789)</td>
+</tr>
+<tr>
+<td>salaires_traitements</td>
+<td>Entier</td>
+<td>Salaires et traitements (ex: 123456789)</td>
+</tr>
+<tr>
+<td>ca_export</td>
+<td>Entier</td>
+<td>Chiffre d&#39;affaires à l&#39;export (ex: 123456789)</td>
+</tr>
+<tr>
+<td>ca_france</td>
+<td>Entier</td>
+<td>Chiffre d&#39;affaires en France (ex: 123456789)</td>
+</tr>
+<tr>
+<td>effectif</td>
+<td>Entier</td>
+<td>Effectif total de l&#39;entreprise (ex: 10)</td>
+</tr>
+<tr>
+<td>fonds_propres</td>
+<td>Entier</td>
+<td>Fonds propres de l&#39;entreprise (ex: 529033)</td>
+</tr>
+<tr>
+<td>capital_social</td>
+<td>Entier</td>
+<td>Capital social de l&#39;entreprise (ex: 13500)</td>
+</tr>
+<tr>
+<td>duree_exercice</td>
+<td>Entier</td>
+<td>Durée de l&#39;exercice (en mois, ex: 12)</td>
+</tr>
+<tr>
+<td>annee_cloture_exercice</td>
+<td>Année</td>
+<td>Année de clôture de l&#39;exercice (ex: 2020)</td>
+</tr>
+<tr>
+<td>date_cloture_exercice</td>
+<td>Date</td>
+<td>Date de clôture de l&#39;exercice (ex: 2020-12-31)</td>
+</tr>
+<tr>
+<td>contacts</td>
+<td>Tableau</td>
+<td>Liste des contacts de l&#39;entreprise (type, nom, prénom, rôle)</td>
+</tr>
+</tbody></table>
+<h1 id='signals'>Signals</h1>
+<p>L&#39;API &quot;Signals&quot; permet de récupérer des signaux d&#39;activité liés aux sociétés et de consulter des collections de signaux spécifiques. Voici les principales routes :</p>
+
+<ul>
+<li><strong><span class="method-get">GET</span> <a href="#get-last-signals">/signals</a></strong> : Récupère les derniers signaux disponibles.</li>
+<li><strong><span class="method-get">GET</span> <a href="#">/signals/{signalId}</a></strong> : Trouve un signal spécifique à partir de son identifiant unique (ID).</li>
+<li><strong><span class="method-get">GET</span> <a href="#">/signals/collection</a></strong> : Récupère une collection de signaux en fournissant une liste d&#39;IDs.</li>
+</ul>
+
+<p>Consultez ce lien pour tester : <a href="https://api.decidento.com/documentation/" target="_blank" rel="noopener noreferrer">API Decidento</a></p>
+<h2 id='get-last-signals'>Get last signals</h2>
+<blockquote>
+<p>This query returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"last_article_pubdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26/03/2021"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26/03/2021"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"last_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26/03/2021"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"follow_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26/03/2022"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"label_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Détecté"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"company_main"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">72242</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"siren"</span><span class="p">:</span><span class="w"> </span><span class="mi">831946488</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800010</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"siege"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"social_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN TOURISME LAB NIMES METROPOLE"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sirets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800123</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">75008</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800128</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">75019</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/2438"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/24384"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"company_alt"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">72242</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"siren"</span><span class="p">:</span><span class="w"> </span><span class="mi">831946488</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800010</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"siege"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"social_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN TOURISME LAB NIMES METROPOLE"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sirets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800123</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">75008</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800128</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">75019</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/2438"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/24384"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"continents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"countries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"departments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">92</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hauts de Seine"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Île-de-France"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Parcoul-Chenaud"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24410"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"insee_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24316"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"departement_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"city_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"city_zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"surface_totale_facilities"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"surface_terrain"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"surface_bati"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date_start_facilities"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-10-02T14:30:44.398Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date_end_facilities_building"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-10-02T14:30:44.398Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cout_total_facilities_ground"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cout_total_facilities_construction"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cout_total_facilities"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"maitre_ouvrage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">72242</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"siren"</span><span class="p">:</span><span class="w"> </span><span class="mi">831946488</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800010</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"siege"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"social_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN TOURISME LAB NIMES METROPOLE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sirets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800123</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">75008</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800128</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">75019</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/2438"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/24384"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"maitre_oeuvre"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">72242</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"siren"</span><span class="p">:</span><span class="w"> </span><span class="mi">831946488</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800010</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"siege"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"social_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN TOURISME LAB NIMES METROPOLE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sirets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800123</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">75008</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"siret"</span><span class="p">:</span><span class="w"> </span><span class="mi">83194648800128</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">75019</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/2438"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.decidento.com/companies/24384"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"type_projet_facilities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"step_projet_facilities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"building_permit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"permit_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08611322A0002"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"permis_amenager"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a list of signals according to the query parameters shown below.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<style>
+  .method-get {
+    color: green;
+    font-weight: bold;
+  }
+</style>
+
+<p><span class="method-get">GET </span>
+<code>
+ https://api.decidento.com/signals/
+</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Champ</th>
+<th>Type</th>
+<th>Description</th>
+<th>Valeur par défaut</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>limit</td>
+<td>Entier</td>
+<td>Limite des valeurs à considérer pour le filtrage</td>
+<td>200</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>Entier</td>
+<td>Début de l&#39;offset (à combiner avec limit pour la pagination)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>order</td>
+<td>Chaîne</td>
+<td>Champ d&#39;ordonnancement</td>
+<td>updatedAt</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeurs disponibles : updatedAt, publishedAt</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>sort</td>
+<td>Chaîne</td>
+<td>Direction du tri</td>
+<td>desc</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeurs disponibles : desc, asc</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>meta</td>
+<td>Booléen</td>
+<td>Informations paginées en sortie</td>
+<td>false</td>
+</tr>
+<tr>
+<td>_format</td>
+<td>Chaîne</td>
+<td>Format de sortie</td>
+<td>json</td>
+</tr>
+<tr>
+<td></td>
+<td>Valeurs disponibles : json, xml</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Nom</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Entier</td>
+<td>Identifiant du projet</td>
+</tr>
+<tr>
+<td>last_article_pubdate</td>
+<td>Chaîne (date)</td>
+<td>Date de publication du dernier article</td>
+</tr>
+<tr>
+<td>creation_date</td>
+<td>Chaîne (date)</td>
+<td>Date de création du projet</td>
+</tr>
+<tr>
+<td>last_update</td>
+<td>Chaîne (date)</td>
+<td>Date de la dernière mise à jour du projet</td>
+</tr>
+<tr>
+<td>follow_date</td>
+<td>Chaîne (date)</td>
+<td>Date de suivi du projet</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Chaîne</td>
+<td>Type du projet</td>
+</tr>
+<tr>
+<td>label_type</td>
+<td>Chaîne</td>
+<td>Libellé du type de projet</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Chaîne</td>
+<td>Statut du projet (ex: &quot;Détecté&quot;)</td>
+</tr>
+<tr>
+<td><strong>company_main</strong></td>
+<td>Objet</td>
+<td>Informations sur la société principale</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;company_main.id</td>
+<td>Entier</td>
+<td>Identifiant de la société principale</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;company_main.siren</td>
+<td>Entier</td>
+<td>SIREN de la société principale</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;company_main.siret</td>
+<td>Entier</td>
+<td>SIRET de la société principale</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;company_main.siege</td>
+<td>Booléen</td>
+<td>Indique si l&#39;établissement est le siège social</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;company_main.social_name</td>
+<td>Chaîne</td>
+<td>Nom de la société principale</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;company_main.sirets</td>
+<td>Tableau d&#39;objet</td>
+<td>Liste des SIRET secondaires</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;company_main.sirets.siret</td>
+<td>Entier</td>
+<td>Numéro SIRET secondaire</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;company_main.sirets.type</td>
+<td>Entier</td>
+<td>Type de SIRET</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;company_main.links</td>
+<td>Tableau d&#39;objet</td>
+<td>Liens associés à la société principale</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;company_main.links.rel</td>
+<td>Chaîne</td>
+<td>Type de lien (ex: &quot;self&quot;)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;company_main.links.href</td>
+<td>Chaîne</td>
+<td>URL du lien</td>
+</tr>
+<tr>
+<td><strong>company_alt</strong></td>
+<td>Objet</td>
+<td>Informations sur les sociétés alternatives (similaire à company_main)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;company_alt.id</td>
+<td>Entier</td>
+<td>Identifiant de la société alternative</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;company_alt.siren</td>
+<td>Entier</td>
+<td>SIREN de la société alternative</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;company_alt.siret</td>
+<td>Entier</td>
+<td>SIRET de la société alternative</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;company_alt.siege</td>
+<td>Booléen</td>
+<td>Indique si l&#39;établissement est le siège social</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;company_alt.social_name</td>
+<td>Chaîne</td>
+<td>Nom de la société alternative</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;company_alt.sirets</td>
+<td>Tableau d&#39;objet</td>
+<td>Liste des SIRET secondaires de la société alternative</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;company_alt.sirets.siret</td>
+<td>Entier</td>
+<td>Numéro SIRET secondaire</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;company_alt.sirets.type</td>
+<td>Entier</td>
+<td>Type de SIRET</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;company_alt.links</td>
+<td>Tableau d&#39;objet</td>
+<td>Liens associés à la société alternative</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;company_alt.links.rel</td>
+<td>Chaîne</td>
+<td>Type de lien (ex: &quot;self&quot;)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;company_alt.links.href</td>
+<td>Chaîne</td>
+<td>URL du lien</td>
+</tr>
+<tr>
+<td>continents</td>
+<td>Tableau de chaînes</td>
+<td>Continents associés au projet</td>
+</tr>
+<tr>
+<td>countries</td>
+<td>Tableau de chaînes</td>
+<td>Pays associés au projet</td>
+</tr>
+<tr>
+<td><strong>departments</strong></td>
+<td>Objet</td>
+<td>Départements associés au projet</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;departments.code</td>
+<td>Entier</td>
+<td>Code du département</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;departments.dep</td>
+<td>Chaîne</td>
+<td>Nom du département</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;departments.region</td>
+<td>Chaîne</td>
+<td>Nom de la région</td>
+</tr>
+<tr>
+<td><strong>city</strong></td>
+<td>Objet</td>
+<td>Ville associée au projet</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;city.label</td>
+<td>Chaîne</td>
+<td>Nom de la ville</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;city.zip_code</td>
+<td>Chaîne</td>
+<td>Code postal de la ville</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;city.insee_code</td>
+<td>Chaîne</td>
+<td>Code INSEE de la ville</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;city.departement_code</td>
+<td>Chaîne</td>
+<td>Code du département</td>
+</tr>
+<tr>
+<td>city_label</td>
+<td>Chaîne</td>
+<td>Libellé de la ville</td>
+</tr>
+<tr>
+<td>city_zip_code</td>
+<td>Chaîne</td>
+<td>Code postal de la ville</td>
+</tr>
+<tr>
+<td>surface_totale_facilities</td>
+<td>Entier</td>
+<td>Surface totale des installations</td>
+</tr>
+<tr>
+<td>surface_terrain</td>
+<td>Entier</td>
+<td>Surface du terrain</td>
+</tr>
+<tr>
+<td>surface_bati</td>
+<td>Entier</td>
+<td>Surface bâtie</td>
+</tr>
+<tr>
+<td>date_start_facilities</td>
+<td>Chaîne (date)</td>
+<td>Date de début des installations</td>
+</tr>
+<tr>
+<td>date_end_facilities_building</td>
+<td>Chaîne (date)</td>
+<td>Date de fin de construction</td>
+</tr>
+<tr>
+<td>cout_total_facilities_ground</td>
+<td>Entier</td>
+<td>Coût total des installations au sol</td>
+</tr>
+<tr>
+<td>cout_total_facilities_construction</td>
+<td>Entier</td>
+<td>Coût total des constructions</td>
+</tr>
+<tr>
+<td>cout_total_facilities</td>
+<td>Entier</td>
+<td>Coût total des installations</td>
+</tr>
+<tr>
+<td><strong>maitre_ouvrage</strong></td>
+<td>Objet</td>
+<td>Informations sur le maître d&#39;ouvrage (similaire à company_main)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;maitre_ouvrage.id</td>
+<td>Entier</td>
+<td>Identifiant du maître d&#39;ouvrage</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;maitre_ouvrage.siren</td>
+<td>Entier</td>
+<td>SIREN du maître d&#39;ouvrage</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;maitre_ouvrage.siret</td>
+<td>Entier</td>
+<td>SIRET du maître d&#39;ouvrage</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;maitre_ouvrage.siege</td>
+<td>Booléen</td>
+<td>Indique si l&#39;établissement est le siège social</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;maitre_ouvrage.social_name</td>
+<td>Chaîne</td>
+<td>Nom du maître d&#39;ouvrage</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;maitre_ouvrage.sirets</td>
+<td>Tableau d&#39;objet</td>
+<td>Liste des SIRET du maître d&#39;ouvrage</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maitre_ouvrage.sirets.siret</td>
+<td>Entier</td>
+<td>Numéro SIRET</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maitre_ouvrage.sirets.type</td>
+<td>Entier</td>
+<td>Type de SIRET</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;maitre_ouvrage.links</td>
+<td>Tableau d&#39;objet</td>
+<td>Liens associés au maître d&#39;ouvrage</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maitre_ouvrage.links.rel</td>
+<td>Chaîne</td>
+<td>Type de lien (ex: &quot;self&quot;)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maitre_ouvrage.links.href</td>
+<td>Chaîne</td>
+<td>URL du lien</td>
+</tr>
+<tr>
+<td><strong>maitre_oeuvre</strong></td>
+<td>Objet</td>
+<td>Informations sur le maître d&#39;œuvre (similaire à company_main)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;maitre_oeuvre.id</td>
+<td>Entier</td>
+<td>Identifiant du maître d&#39;œuvre</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;maitre_oeuvre.siren</td>
+<td>Entier</td>
+<td>SIREN du maître d&#39;œuvre</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;maitre_oeuvre.siret</td>
+<td>Entier</td>
+<td>SIRET du maître d&#39;œuvre</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;maitre_oeuvre.siege</td>
+<td>Booléen</td>
+<td>Indique si l&#39;établissement est le siège social</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;maitre_oeuvre.social_name</td>
+<td>Chaîne</td>
+<td>Nom du maître d&#39;œuvre</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;maitre_oeuvre.sirets</td>
+<td>Tableau d&#39;objet</td>
+<td>Liste des SIRET du maître d&#39;œuvre</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maitre_oeuvre.sirets.siret</td>
+<td>Entier</td>
+<td>Numéro SIRET</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maitre_oeuvre.sirets.type</td>
+<td>Entier</td>
+<td>Type de SIRET</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;maitre_oeuvre.links</td>
+<td>Tableau d&#39;objet</td>
+<td>Liens associés au maître d&#39;œuvre</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maitre_oeuvre.links.rel</td>
+<td>Chaîne</td>
+<td>Type de lien (ex: &quot;self&quot;)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maitre_oeuvre.links.href</td>
+<td>Chaîne</td>
+<td>URL du lien</td>
+</tr>
+<tr>
+<td>type_projet_facilities</td>
+<td>Tableau de chaînes</td>
+<td>Type de projet d&#39;installation</td>
+</tr>
+<tr>
+<td>step_projet_facilities</td>
+<td>Tableau de chaînes</td>
+<td>Étape du projet d&#39;installation</td>
+</tr>
+<tr>
+<td><strong>building_permit</strong></td>
+<td>Objet</td>
+<td>Informations sur le permis de construire</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;building_permit.permit_number</td>
+<td>Chaîne</td>
+<td>Numéro du permis de construire</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;building_permit.type</td>
+<td>Chaîne</td>
+<td>Type de permis (ex: &quot;permis_amenager&quot;)</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-signal'>Get a signal</h2>
+<blockquote>
+<p>This query returns JSON structured like this :</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a signal according to ID.</p>
 
       </div>
       <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
-          </div>
       </div>
     </div>
   </body>
